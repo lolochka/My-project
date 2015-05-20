@@ -1,0 +1,14 @@
+Application for storing information about employees. Allow to create employee card with number of properties.
+	
+Candidate properties:
+1. Name Surname *required
+2. Department
+2. Title *required + Level (junior, middle, senior - choose from the list)
+4. Rate 
+5. Linkedin page 
+6. Primary skills (tags) *Required 
+7. Years of experience (number). Enter date of career start, program count years + months *required
+8. Comment (+Author, +Date) 
+9. Attached files (Resume) *required
+10. Personal site, portfolio on behance (url)
+11. Contact information: skype, mail *required
