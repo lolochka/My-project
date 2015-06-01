@@ -10,7 +10,7 @@ body {
    clear: both; 
 }
 
-/*Font*/
+/*FONT*/
 @font-face {
 	font-family: "Flaticon";
 	src: url("fonts/flaticon.eot");
@@ -27,6 +27,7 @@ body {
    font-size: 1.25em;
    font-style: normal;
    margin-right: 10px;
+   color: gray;
 }
 .flaticon-avatar22:before {
 	content: "\e000";
@@ -52,10 +53,10 @@ body {
 .flaticon-skype12:before {
 	content: "\e007";
 }
-/*Font ends*/
+/*FONT ENDS*/
 
 
-/*Header begin*/
+/*HEADER NAV BEGINS*/
 
 .block-header {
    padding: 1em 1em;
@@ -84,17 +85,149 @@ body {
 .block-header a:hover, .block-header a:active, .block-header a:focus {
    color: #F38630;
 }
-/*<!--   Header ends-->*/
+/*HEADER NAV ENDS*/
 
-/*<!--   Block employees list begins-->*/
-.block-employees {
+
+/*BLOCK DESCRIPTION BEGINS*/
+.right-wrap {
+   float:right;
+   width:100%;
+}
+
+.block-emploee-description {
    box-sizing: border-box;
    height: 100%;
+   margin-left:320px;
+   border-radius: 0.5em 0.5em 0.5em 0.5em;
+   box-shadow: 0px 1px 1px #C6D5CD;
+   -webkit-box-shadow: 0px 1px 1px #C6D5CD;
+   -moz-box-shadow: 0px 1px 1px #C6D5CD;
+   -ms-box-shadow: 0px 1px 1px #C6D5CD;
+   -o-box-shadow: 0px 1px 1px #C6D5CD;
+}
+
+/*EMPLOYEE DESCRIPTION HEADER BEGINS*/
+.block-emploee-description_header {
+   padding: 0.5em 1em;
+   background-color: #E0E4CC;
+   margin-bottom: 0.5em;
+   font-size: 1.25em;
+   box-shadow: 0px 1px 1px #C6D5CD;
+   border-radius: 0.5em 0.5em 0px 0px;
+}
+
+.block-emploee-description_name {
+   float: left;
+   font-weight: 700;
+}
+
+.block-emploee-description_title {
+   float: right;
+}
+
+.block-emploee-description_projects-list {
+   clear: both;
+   margin-left: 1em;
+}
+
+.block-emploee-description_projects-list_project {
+   display: inline-block;
+   font-size: 0.875em;
+   margin: 1px;
+   padding: 4px 8px;
+   background-color: #69D2E7;
+   cursor: pointer;
+   border-right: 7px solid #A7DBDB;
+   transition: background-color 0.3s, color 0.2s;   
+}
+
+.block-emploee-description_projects-list_project a{
+   color: #fff;
+}
+
+.block-emploee-description_projects-list_project:hover, .block-emploee-description_projects-list_project:active, .block-emploee-description_projects-list_project:focus {
+   cursor: pointer;
+   background-color: #A7DBDB;
+}
+/*DESCRIPTION HEADER ENDS*/
+
+/*MAIN DESCRIPTION BEGINS*/
+.block-emploee-description_block-main-description {
+   padding: 1em;
+}
+
+/*CONTACT BLOCK BEGINS*/
+.block-emploee-description_block-main-description_block-contacts {
+   float:right;
+   box-sizing: border-box;
+   margin-left: 1em;
+   margin-bottom: 1em;
+   width: 16em;
+   padding: 1em 1em;
+   background-color: #A7DBDB;
+   border-radius: 0.5em 0.5em 0.5em 0.5em;
+}
+
+.block-emploee-description_block-main-description_block-contacts_heading {
+   margin-bottom: 0.5em;
+   padding-bottom: 0.2em;
+   font-weight: 700;
+   border-bottom: 2px solid #F38630;
+}
+
+.block-emploee-description_block-main-description_block-contacts_email {
+   max-width: 15em;
+   overflow-x: hidden;
+   text-overflow: ellipsis;
+}
+/*CONTACT BLOCK ENDS*/
+
+.block-emploee-description_description {
+   font-size: 1.1em;
+   padding-bottom: 0.5em;
+}
+.block-emploee-description_list-description_department, .block-emploee-description_block-main-description_manager, .block-emploee-description_block-main-description_years, .block-emploee-description_block-main-description_tags-list {
+   padding: inherit;
+}
+
+.block-emploee-description_list-description_department-title, .block-emploee-description_list-description_department-label, .block-emploee-description_block-main-description_manager-label, .block-emploee-description_block-main-description_years-label, .block-emploee-description_block-main-description_skills-label, .block-emploee-description_block-main-description_links_label {
+   font-weight: 300;
+}
+
+.block-emploee-description_block-main-description_tags-list_tag {
+   display: inline-block;
+   padding: 0.1em 0.3em;
+   margin-bottom: 0.2em;
+   background-color: #E0E4CC;
+   border-right: 6px solid #A7DBDB;
+}
+
+.block-emploee-description_block-main-description_links-list_link a{
+   display: inline-block;
+   max-width: 15em;
+   max-height: 1.2em;
+   overflow: hidden;
+   text-overflow: ellipsis;
+   font-size: 1em;
+   vertical-align: top;
+}
+/*BLOCK DESCRIPTION ENDS*/
+
+/*EMPLOYEES LIST BEGINS*/
+.block-employees {
+   box-sizing: border-box;
    float: left;
    width: 33.7%;
+   width: 315px;
+   margin-right: -315px;
    padding-bottom: 1em;
+   margin-bottom: 0.5em;
    border-radius: 0.8em 0.8em 0.5em 0.5em;
-   border: 3px solid  #E0E4CC;
+   box-shadow: 0px 1px 1px #C6D5CD;
+   -webkit-box-shadow: 0px 1px 1px #C6D5CD;
+   -moz-box-shadow: 0px 1px 1px #C6D5CD;
+   -ms-box-shadow: 0px 1px 1px #C6D5CD;
+   -o-box-shadow: 0px 1px 1px #C6D5CD;
 }
 
 .block-employees_title {
@@ -161,13 +294,17 @@ body {
 }
 
 
-/*Employee list*/
+/*LIST BEGINS*/
 .block-employees_block-employee {
    box-sizing: border-box;
    display: block;
    padding: 0.5em 1em;
    cursor: pointer;
    box-shadow: 0px 1px 1px #C6D5CD;
+   -webkit-box-shadow: 0px 1px 1px #C6D5CD;
+   -moz-box-shadow: 0px 1px 1px #C6D5CD;
+   -ms-box-shadow: 0px 1px 1px #C6D5CD;
+   -o-box-shadow: 0px 1px 1px #C6D5CD;
 }
 
 .block-employees_block-employee_name {
@@ -201,136 +338,136 @@ body {
 .block-employees_block-employee_block-tags_tag:last-child::after {
    content: '';
 }
+/*EMPLOYEES LIST ENDS*/
 
-/*<!--   Block employees list begins-->*/
-
-
-/*<!--   Block employee main description begins-->*/
-.block-emploee-description {
-   box-sizing: border-box;
-   float: right;
-   width: 66%;
-   border-radius: 0.5em 0.5em 0.5em 0.5em;
+/*FORM CREATE NEW EMPLOYEE BEGINS*/
+.block-create-employee{
+   width: 100%;
+   max-width: 500px;
+   margin: 0px auto;
+   box-shadow: 0px 1px 1px #C6D5CD;
+   -webkit-box-shadow: 0px 1px 1px #C6D5CD;
+   -moz-box-shadow: 0px 1px 1px #C6D5CD;
+   -ms-box-shadow: 0px 1px 1px #C6D5CD;
+   -o-box-shadow: 0px 1px 1px #C6D5CD;
+   border-radius: 0.5em;   
 }
 
-/*Employee description header*/
-.block-emploee-description_header {
-   background-color:  #E0E4CC;
+.heading-create-employee {
    padding: 0.5em 1em;
-   border-radius: 0.5em 0.5em 0em 0em;
-}
-
-.block-emploee-description_name {
-   float: left;
+   background-color: #F38630;
+   color: #fff;
    margin-bottom: 0.5em;
    font-size: 1.25em;
+   box-shadow: 0px 1px 1px #C6D5CD;
+   border-radius: 0.5em 0.5em 0px 0px;
    font-weight: 700;
 }
 
-.block-emploee-description_title {
-   float: right;
-   font-size: 1.25em;
-}
-
-.block-emploee-description_header_projects-list {
-   clear: both;
-}
-
-.block-emploee-description_header_projects-list_project {
-   display: inline-block;
-   font-size: 0.875em;
-   margin: 1px;
-   padding: 4px 8px;
-   background-color: #fff;
-   cursor: pointer;
-   border-right: 7px solid #A7DBDB;
-}
-
-.block-emploee-description_header_projects-list_project {
-   display: inline-block;
-   font-size: 0.875em;
-   margin: 1px;
-   padding: 4px 8px;
-   background-color: #fff;
-   cursor: pointer;
-   border-right: 7px solid #A7DBDB;
-   transition: background-color 0.3s, color 0.2s;   
-}
-
-.block-emploee-description_header_projects-list_project a{
-   color: #0B1919;
-}
-
-.block-emploee-description_header_projects-list_project:hover, .block-emploee-description_header_projects-list_project:active, .block-emploee-description_header_projects-list_project:focus {
-   cursor: pointer;
-   background-color: #A7DBDB;
-}
-
-
-/*Employee description header ends*/
-
-/*Main description begins*/
-
-.block-emploee-description_block-main-description {
+.create-emloyee-form {
    padding: 1em;
-   border: 3px solid #E0E4CC;
-   border-radius: 0em 0em 0.5em 0.5em;
 }
 
-/*Contacnt block*/
-.block-emploee-description_block-main-description_block-contacts {
-   float:right;
-   box-sizing: border-box;
-   margin-left: 1em;
+.create-emloyee-form_list-field {
    margin-bottom: 1em;
-   width: 16em;
-   padding: 1em 1em;
-   background-color: #A7DBDB;
+}
+
+.input-label {
+   display: block;
+   margin-bottom: 0.2em;
+   font-size: 1.1em;
+   line-height: 1.5em;
+}
+
+/*FORM BEGINS*/
+input {
+   box-sizing: border-box;
+   width: 48%;
+   height: 2em;
+   margin-right: 0.5em;
+   font-size: 1em;
+   background-color: aliceblue;
+   border: 1px solid #E0E4CC;
+   border-radius: 0.5em;
+   padding: 0 0.3em;
+}
+
+select {
+   box-sizing: border-box;
+   padding-right: 16px;
+   margin-right: 0.5em;
+   border: 1px solid #E0E4CC;
+   border-radius: 0.5em;
+   height: 2em;
+   font-size: 1em;
+   -webkit-appearance: none;
+   -ms-appearance: none;
+   -o-appearance: none;
+   appearance: none;
+   background: url(../images/down119.svg) no-repeat right aliceblue;
+}
+
+select::-ms-expand {
+    display: none;
+}
+
+input[type="url"] {
+  margin-bottom: 0.5em;
+}
+
+input[type="number"] {
+   width: 6em;
+}
+
+select[name="department"] {
+   width:11em;
+}
+
+select[name="month-career-start"] {
+   width: 11em;
+}
+
+input[name="primary-skills"] {
+   width:100%
+}
+
+input:focus, input.focus {
+  box-shadow: 0 0 2px 1px #E0E4CC;
+}
+
+select:focus, select.focus {
+  box-shadow: 0 0 2px 1px #E0E4CC;
+}
+
+
+/*FORM ENDS*/
+/*FORM CREATE NEW EMPLOYEE ENDS*/
+
+/*FOOTER BEGINS*/
+.block-footer{
+   clear: both;
+   padding: 0.5em 0.5em;
+   margin-bottom: 0.2em;
+   background-color: #F38630;
    border-radius: 0.5em 0.5em 0.5em 0.5em;
 }
 
-.block-emploee-description_block-main-description_block-contacts_heading {
-   margin-bottom: 0.5em;
-   padding-bottom: 0.2em;
-   font-weight: 700;
-   border-bottom: 2px solid #F38630;
+.block-footer_list-links {
+   width: 13em;
+   margin: auto;
+   font-size: 0.875em;
 }
 
-.block-emploee-description_block-main-description_block-contacts_email {
-   max-width: 15em;
-   overflow-x: hidden;
-   text-overflow: ellipsis;
-}
-/*Contacnt block ends*/
-
-.block-emploee-description_description {
-   font-size: 1.1em;
-   padding-bottom: 0.5em;
-}
-.block-emploee-description_list-description_department, .block-emploee-description_block-main-description_manager, .block-emploee-description_block-main-description_years, .block-emploee-description_block-main-description_tags-list {
-   padding: inherit;
-}
-
-.block-emploee-description_list-description_department-title, .block-emploee-description_list-description_department-label, .block-emploee-description_block-main-description_manager-label, .block-emploee-description_block-main-description_years-label, .block-emploee-description_block-main-description_skills-label, .block-emploee-description_block-main-description_links_label {
-   font-weight: 300;
-}
-
-.block-emploee-description_block-main-description_tags-list_tag {
+.block-footer_list-links_link {
    display: inline-block;
-   padding: 0.1em 0.3em;
-   margin-bottom: 0.2em;
-   background-color: #E0E4CC;
-   border-right: 6px solid #A7DBDB;
+   padding: 0.5em;
+}
+.block-footer_list-links_link a {
+   color: #fff;
 }
 
-.block-emploee-description_block-main-description_links-list_link {
-   max-width: 15em;
-   max-height: 1.5em;
-   overflow: hidden;
-   text-overflow: ellipsis;
-   font-size: 1em;
+.block-footer_list-links_link a:hover, .block-footer_list-links_link a:active, .block-footer_list-links_link a:focus {
+   color: #E0E4CC;
 }
 
-/*Main description ends*/
-
-/*<!--   Block employee main description ends-->*/
+/*<!-- Footer ends  -->*/

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width; initial-scale=1.0">
+   <link href="css/reset.css" rel="stylesheet" type="text/css">
+   <link href='http://fonts.googleapis.com/css?family=Roboto:300,700,400' rel='stylesheet' type='text/css'>
+   <link href="css/style.css" rel="stylesheet" type="text/css">
+   <title>Menu</title>
+</head>
+<body>
+<!--Form begins-->
+   <section class="block-create-employee">
+      <h1 class="heading-create-employee">New employee</h1>
+      <form id="create-emloyee-form" name="create-employee" action="#" method="get" class="create-emloyee-form">
+         <ul class="create-emloyee-form_list">
+            
+            <li class="create-emloyee-form_list-field">
+               <span class="input-label">Name</span>
+               <input type="text" name='first-name' placeholder="Name" required>
+               <input type="text" name='first-name' placeholder="Surname" required>
+            </li>
+
+            <li class="create-emloyee-form_list-field">
+               <span class="input-label">Job title</span>
+               <input type="text" name="title" placeholder="Job position" required>
+               <select name="level" id="level">
+                  <option value>Choose level</option>
+                  <option value="Junior">Junior</option>
+                  <option value="Middle">Middle</option>
+                  <option value="Senior">Senior</option>
+               </select>
+            </li>
+
+            <li class="create-emloyee-form_list-field">
+               <span class="input-label">Department & manager</span>
+               <select name="department" id="department" required>
+                  <option value>Choose department</option>
+                  <option value="Gryffindor">Gryffindor</option>
+                  <option value="Slytherin">Slytherin</option>
+                  <option value="Hufflepuff">Hufflepuff</option>
+                  <option value="Ravenclaw">Ravenclaw</option>
+               </select>
+               <input type="text" name="manager" placeholder="Name Surname">
+            </li>
+
+            <li class="create-emloyee-form_list-field">
+               <span class="input-label">Career start</span>
+               <select name="month-career-start" id="month-career-start">
+                  <option value>Choose month</option>
+                  <option value="January">January</option>
+                  <option value="February">February</option>
+                  <option value="March">March</option>
+                  <option value="March">March</option>
+                  <option value="April">April</option>
+                  <option value="May">May</option>
+                  <option value="June">June</option>
+                  <option value="July">July</option>
+                  <option value="August">August</option>
+                  <option value="Septmber">Septmber</option>
+                  <option value="October">October</option>
+                  <option value="November">November</option>
+                  <option value="December">December</option>
+               </select>
+               <input type="number"  name="year-career-start" id="year-career-start" placeholder="year">
+            </li>
+            
+            <li class="create-emloyee-form_list-field">
+               <span class="input-label">Primary skills</span>
+               <input name="primary-skills" type="text" placeholder="Separate skills by comas" required>
+            </li>
+            
+            <li  class="create-emloyee-form_list-field">
+               <span class="input-label">Employee links</span>
+               <ul class="create-emloyee-form_list-links">  
+                  <li class="create-emloyee-form_list-links_link">
+                     <span class="flaticon-linkedin12"></span>
+                     <input type="url" name="linkedin-page" placeholder="Linkedin page url">
+                  </li>
+                  <li class="create-emloyee-form_list-links_link">
+                     <span class="flaticon-behance7"></span>
+                     <input type="url" name="linkedin-page" placeholder="Behance page url">
+                  </li>
+                  <li class="create-emloyee-form_list-links_link">
+                     <span class="flaticon-connector3"></span>
+                     <input type="url" name="linkedin-page" placeholder="Other sites">
+                  </li>
+               </ul>
+            </li>
+            
+            <li  class="create-emloyee-form_list-field">
+               <span class="input-label">Contact information</span>
+               <input name="skype" type="text" placeholder="skype" required>
+               <input name="email" type="email" placeholder="e-mail">
+            </li>         
+         
+         </ul>
+         
+         <button type="submit" id="buton-create-employee">Submit</button>
+      </form>
+   </section>
+<!--Form ends-->
+   
+</body>
+</html>
