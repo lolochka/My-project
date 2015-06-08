@@ -16,7 +16,6 @@ a:hover, a:focus, a:active {
    color: #7421a4;
 }
 
-
 /*HEADER NAV BEGINS*/
 
 .block-header {
@@ -113,8 +112,6 @@ a:hover, a:focus, a:active {
    margin: 14px 15px;
    display: none;
 }
-
-
 /*DESCRIPTION HEADER ENDS*/
 
 /*MAIN DESCRIPTION BEGINS*/
@@ -125,7 +122,6 @@ a:hover, a:focus, a:active {
 .block-emploee-description_block-main-description_header {
    overflow: hidden;
 }
-
 
 .photo-block {
    float: left;
@@ -457,7 +453,7 @@ a:hover, a:focus, a:active {
 input {
    box-sizing: border-box;
    border: 1px solid #e0dfe0;
-   font-size: 12px;
+   font-size: 14px;
    padding: 8px;
    margin: 5px 0px 5px;
 }
@@ -479,7 +475,7 @@ select {
    box-sizing: border-box;
    border: 1px solid #e0dfe0;
    font-style: italic;
-   font-size: 12px;
+   font-size: 14px;
    padding: 8px;
    padding-right: 16px;
    -webkit-appearance: none;
@@ -569,7 +565,6 @@ button[id="buton-create-employee"] {
 button[id="buton-create-employee"]:hover, button[id="buton-create-employee"]:active, button[id="buton-create-employee"]:focus {
    color: #c0c0c0;
 }
-
 /*FORM ENDS*/
 /*FORM CREATE NEW EMPLOYEE ENDS*/
 
@@ -601,4 +596,4 @@ button[id="buton-create-employee"]:hover, button[id="buton-create-employee"]:act
    color: #E0E4CC;
 }
 
-/*<!-- Footer ends  -->*/
+/* FOOTER ENDS*/
