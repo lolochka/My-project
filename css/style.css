@@ -305,7 +305,7 @@ a:hover, a:focus, a:active {
 }
 
 .block-employees_nav-departments_list {
-   margin: 17px 11px;
+   margin: 10px 11px;
 }
 
 .block-employees_nav-departments_list_department {
@@ -314,6 +314,7 @@ a:hover, a:focus, a:active {
    padding-top: 3px;
    padding: 4px;
    margin-right: 9px;
+   margin-top: 3px;
 }
 
 
@@ -364,12 +365,8 @@ a:hover, a:focus, a:active {
    box-sizing: border-box;
    display: block;
    padding: 0.5em 1em;
+   margin-bottom: 5px;
    cursor: pointer;
-   box-shadow: 0px 1px 1px #C6D5CD;
-   -webkit-box-shadow: 0px 1px 1px #C6D5CD;
-   -moz-box-shadow: 0px 1px 1px #C6D5CD;
-   -ms-box-shadow: 0px 1px 1px #C6D5CD;
-   -o-box-shadow: 0px 1px 1px #C6D5CD;
 }
 
 .block-employees_block-employee_name {
