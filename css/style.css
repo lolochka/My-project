@@ -2,6 +2,7 @@ body {
    background: url(images/bg-texture-pave1.png);
    font: 400 14px / 17.996px Noto Sans, sans-serif;
    color: #2e2e2e;
+   overflow: auto;
 }
 
 .wrapper {
@@ -400,11 +401,59 @@ a:hover, a:focus, a:active {
 /*EMPLOYEES LIST ENDS*/
 
 /*FORM CREATE NEW EMPLOYEE BEGINS*/
+
+.overlay {
+   background-color: rgba(0, 0, 0, 0.6);
+   bottom: 0;
+   cursor: default;
+   left: 0;
+   opacity: 0;
+   position: fixed;
+   right: 0;
+   top: 0;
+   visibility: hidden;
+   z-index: 1;
+   
+   -webkit-transition: opacity .5s;
+   -moz-transition: opacity .5s;
+   -ms-transition: opacity .5s;
+   -o-transition: opacity .5s;
+   transition: opacity .5s;
+}
+
+.overlay:target {
+   visibility: visible;
+   opacity: 1;
+}
+
 .block-create-employee{
    width: 100%;
    max-width: 400px;
-   margin: 0px auto;
    background-color: #fff;
+   left: 50%;
+   opacity: 1;
+   top: -50%;
+   position: absolute;
+   visibility: hidden;
+   z-index: 3;
+   
+   -webkit-transform: translate(-50%, -50%);
+   -moz-transform: translate(-50%, -0%);
+   -ms-transform: translate(-50%, -0%);
+   -o-transform: translate(-50%, -0%);
+   transform: translate(-50%, -0%);
+   
+   -webkit-transition: opacity .5s, top .5s;
+   -moz-transition: opacity .5s, top .5s;
+   -ms-transition: opacity .5s, top .5s;
+   -o-transition: opacity .5s, top .5s;
+   transition: opacity .5s, top .5s;
+}
+
+.overlay:target+.block-create-employee {
+   top: 0;
+   opacity: 1;
+   visibility: visible;
 }
 
 .heading-create-employee {
@@ -449,6 +498,7 @@ a:hover, a:focus, a:active {
    padding-bottom: 70px;
    background-color: rgba(88, 86, 89, 0.8);;
 }
+
 /*FORM BEGINS*/
 input {
    box-sizing: border-box;
