@@ -38,7 +38,7 @@ saveEmployee.onclick = function (e) {
   var emplSurname = document.querySelector("input[name='empl-surname']");
   var emplTitle = document.querySelector("input[name='empl-title']");
   var emplLevel = document.querySelector("select[name='empl-level']");
-  var emplDepartment = document.querySelector("selector[name='empl-department']");
+  var emplDepartment = document.querySelector("select[name='empl-department']");
   var emplManager = document.querySelector("input[name='empl-manager']");
   var emplMonth = document.querySelector("select[name='empl-month-career-start']");
   var emplYear = document.querySelector("input[name='empl-year-career-start']");
@@ -59,7 +59,7 @@ saveEmployee.onclick = function (e) {
   empl.department = emplDepartment.value;
   empl.manager = emplManager.value;
   
-  empl.experience = function (emplMonth, emplYear) {
+  empl.experience = function () {
     var month = emplMonth.value;
     var year = emplYear.value;
     var nowMonth = date.getMonth();
@@ -89,7 +89,7 @@ saveEmployee.onclick = function (e) {
       
     } else {
       diffMonth = diffMonth + 12;
-      var diffYear = diffYear - 1;
+      diffYear = diffYear - 1;
       if (diffYear > 0) {
         return diffYear + " year(s) and " + diffMonth + " month(es)";
       } else if (diffYear === 0) {
@@ -101,7 +101,7 @@ saveEmployee.onclick = function (e) {
     
   };
   
-  empl.skills = function (emplSkills) {
+  empl.skills = function () {
     var s = emplSkills.value;
     var skills = s.split(", ");
     return skills;
@@ -113,11 +113,20 @@ saveEmployee.onclick = function (e) {
   empl.skype = emplSkype.value;
   empl.email = emplEmail.value;
   
+//  console.log(empl); ПРОВЕРКА
+//  console.log(empl.experience());
+//  console.log(empl.skills());
+  
   storeEmployee(empl);
+  
   return false;
-}
+};
 
 function storeEmployee(empl) {
   addItem(empl.id, empl);
   clearUI();
+}
+
+function clearUI() {
+  document.getElementById('create-emloyee-form').reset();//обнуляем все поля формы с помощь reset()
 }

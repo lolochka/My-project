@@ -1,0 +1,13 @@
+CACHE MANIFEST
+# v7
+
+CACHE:
+/index.html
+/submit.html
+css/styles.css
+javascript/offline.js
+javascript/db.js
+javascript/app.js
+
+FALLBACK:
+/error.html

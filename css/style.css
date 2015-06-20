@@ -437,11 +437,11 @@ a:hover, a:focus, a:active {
    visibility: hidden;
    z-index: 3;
    
-   -webkit-transform: translate(-50%, -50%);
-   -moz-transform: translate(-50%, -0%);
-   -ms-transform: translate(-50%, -0%);
-   -o-transform: translate(-50%, -0%);
-   transform: translate(-50%, -0%);
+   -webkit-transform: translate(-50%, 10%);
+   -moz-transform: translate(-50%, 10%);
+   -ms-transform: translate(-50%, 10%);
+   -o-transform: translate(-50%, 10%%);
+   transform: translate(-50%, 10%);
    
    -webkit-transition: opacity .5s, top .5s;
    -moz-transition: opacity .5s, top .5s;
@@ -559,7 +559,7 @@ select[name="empl-level"] {
 
 
 input[name="empl-year-career-start"] {
-   width: 93px;
+   width: 89px;
 }
 
 input[name="empl-primary-skills"] {
@@ -620,7 +620,7 @@ button[id="buton-create-employee"]:hover, button[id="buton-create-employee"]:act
 
 /*FOOTER BEGINS*/
 .block-footer{
-   cleresize:  both;
+   clear:  both;
    margin-top: 25px;
    background-color: #585659;
    padding-top: 12px;
