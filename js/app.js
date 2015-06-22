@@ -29,9 +29,9 @@
 //}
 
 //create employee and save him to localStorage
-var saveEmployee = document.getElementById('buton-create-employee');
+var saveEmployee = document.getElementById('create-emloyee-form');
 
-saveEmployee.onclick = function (e) {
+saveEmployee.onsubmit = function (e) {
   var empl = {};
   
   var emplName = document.querySelector("input[name='empl-name']");
@@ -59,53 +59,52 @@ saveEmployee.onclick = function (e) {
   empl.department = emplDepartment.value;
   empl.manager = emplManager.value;
   
-  empl.experience = function () {
+  var experience;
+  function getExperience() {
     var month = emplMonth.value;
     var year = emplYear.value;
     var nowMonth = date.getMonth();
     var nowYear = date.getFullYear();
-    
     var diffMonth = nowMonth - month;////need compile
     var diffYear = nowYear - year;
    
     if (diffMonth > 0) {
-      
       if (diffYear > 0) {
-        return diffYear + " year(s) and " + diffMonth + " month(es)";
+        experience = diffYear + " year(s) and " + diffMonth + " month(es)";
       } else if (diffYear === 0) {
-        return diffMonth + " month(es)";
+        experience = diffMonth + " month(es)";
       } else {
-        return "Have not started yet";
+        experience = "Have not started yet";
       }
       
     } else if (diffMonth === 0) {
       if (diffYear > 0) {
-        return diffYear + " year(s)";
+        experience = diffYear + " year(s)";
       } else if (diffYear === 0) {
-        return "Don't have any experience";
+        experience = "Don't have any experience";
       } else {
-        return "Have not started yet";
+        experience = "Have not started yet";
       }
       
     } else {
       diffMonth = diffMonth + 12;
       diffYear = diffYear - 1;
       if (diffYear > 0) {
-        return diffYear + " year(s) and " + diffMonth + " month(es)";
+        experience = diffYear + " year(s) and " + diffMonth + " month(es)";
       } else if (diffYear === 0) {
-        return diffMonth + " month(es)";
+        experience = diffMonth + " month(es)";
       } else {
-        return "Have not started yet";
+        experience = "Have not started yet";
       }
     }//need compile
-    
-  };
+  }
   
-  empl.skills = function () {
-    var s = emplSkills.value;
-    var skills = s.split(", ");
-    return skills;
-  };
+  getExperience();
+  empl.experience = experience;
+  
+  var s = emplSkills.value;
+  var skills = s.split(", ");
+  empl.skills = skills;
   
   empl.ldUrl = emplLdUrl.value;
   empl.bhUrl = emplBhUrl.value;
@@ -118,8 +117,7 @@ saveEmployee.onclick = function (e) {
 //  console.log(empl.skills());
   
   storeEmployee(empl);
-  
-  return false;
+  drawUI();
 };
 
 function storeEmployee(empl) {
@@ -129,4 +127,35 @@ function storeEmployee(empl) {
 
 function clearUI() {
   document.getElementById('create-emloyee-form').reset();//обнуляем все поля формы с помощь reset()
+}
+
+function drawUI() {
+  var employeesUl = document.querySelector(".block-employees_list");
+  while (employeesUl.hasChildNodes()) {
+    employeesUl.removeChild(employeesUl.firstChild);
+  }
+  var employees = [];
+  getAllItems(function (result) {
+    employees = result;
+  });
+  console.log(employees);
+
+  for (var i = 0; i < employees.length; i++) {
+    console.log(employees[i].id);//CHECK
+    var employeesLi = document.createElement('li');
+    var skillSet = employees[i].skills;
+    console.log(skillSet);
+    
+    for (var k = 0; k < skillSet.length; k++) {
+      var skillUl = '';
+      skillUl += '<li class="block-employees_block-employee_block-tags_tag">' + skillSet[k] +'</li>';
+    }
+    
+    employeesLi.innerHTML = '<div class="photo-block"><img src="images/photo-harry-potter.png" alt="Harry Potter foto"></div><h3 class="block-employees_block-employee_name">' + employees[i].name + ' ' + employees[i].surname + '</h3><p class="block-employees_block-employee_title">' + employees[i].level + ' ' + employees[i].title + '</p><ul class="block-employees_block-employee_block-tags">' + skillUl +'</ul>';
+    
+    employeesLi.setAttribute('id', employees[i].id);
+    var emplClass = 'block-employees_block-employee ' + employees[i].department + ' ';
+    employeesLi.setAttribute('class', emplClass);
+    employeesUl.appendChild(employeesLi);
+  }
 }

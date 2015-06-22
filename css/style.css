@@ -213,8 +213,8 @@ a:hover, a:focus, a:active {
    padding-bottom: 20px;
 }
 
-.block-emploee-description_block-main-description_years-label, .block-emploee-description_block-main-description_manager-label, .block-emploee-description_list-description_department-label {
-   font-weight: 700;
+.block-emploee-description_list-description_department-label {
+  text-transform: capitalize;
 }
 
 .block-emploee-description_block-main-description_tags-list_tag {
@@ -315,44 +315,44 @@ a:hover, a:focus, a:active {
 }
 
 
-.department1 {
+.mobile {
    border-right: 5px solid #13d56e;
    transition: background-color 0.3s, color 0.2s;
 }
 
-.department2 {
+.web {
    border-right: 5px solid #ffb912;
    transition: background-color 0.3s, color 0.2s;
 }
 
 
-.department3 {
+.testing {
    border-right: 5px solid #13b3d5;
    transition: background-color 0.3s, color 0.2s;
 }
 
 
-.department4 {
+.sales {
    border-right: 5px solid #7421a4;
    transition: background-color 0.3s, color 0.2s;
 }
 
-.department1:hover, .department1:active, .department1:focus, .department1.active {
+.mobile:hover, .mobile:active, .mobile:focus, .mobile.active {
    background-color: #13d56e;
    color: #fff;
 }
 
-.department2:hover, .department2:active, .department2:focus, .department2.active {
+.web:hover, .web:active, .web:focus, .web.active {
    background-color: #ffb912;
    color: #fff;
 }
 
-.department3:hover, .department3:active, .department3:focus, .department3.active {
+.testing:hover, .testing:active, .testing:focus, .testing.active {
    background-color: #13b3d5;
    color: #fff;
 }
 
-.department4:hover, .department4:active, .department4:focus, .department4.active {
+.sales:hover, .sales:active, .sales:focus, .sales.active {
    background-color: #7421a4;
    color: #fff;
 }
