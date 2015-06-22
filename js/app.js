@@ -29,6 +29,41 @@
 //}
 
 //create employee and save him to localStorage
+drawEmplList();
+
+function drawEmplList() {
+  var employeesUl = document.querySelector(".block-employees_list");
+  while (employeesUl.hasChildNodes()) {
+    employeesUl.removeChild(employeesUl.firstChild);
+  }
+  
+  var employees = [];
+  getAllItems(function (result) {
+    employees = result;
+  });
+  console.log(employees);
+
+  for (var i = 0; i < employees.length; i++) {
+    console.log(employees[i].id);//CHECK
+    var employeesLi = document.createElement('li');
+    var skillSet = employees[i].skills;
+    console.log(skillSet);
+    skillUl = skillSet.join('</li><li class="block-employees_block-employee_block-tags_tag">')
+    skillUl = '<li class="block-employees_block-employee_block-tags_tag">' + skillUl + '</li>';
+    employeesLi.innerHTML = '<div class="photo-block"><img src="images/photo-harry-potter.png" alt="Harry Potter foto"></div><h3 class="block-employees_block-employee_name">' + employees[i].name + ' ' + employees[i].surname + '</h3><p class="block-employees_block-employee_title">' + employees[i].level + ' ' + employees[i].title + '</p><ul class="block-employees_block-employee_block-tags">' + skillUl +'</ul>';
+    
+    employeesLi.setAttribute('id', employees[i].id);
+    var emplClass = 'block-employees_block-employee ' + employees[i].department + ' ';
+    employeesLi.setAttribute('class', emplClass);
+    employeesUl.appendChild(employeesLi);
+  }
+  
+  var j = employees.length - 1
+  var newEmployeeId = employees[j].id;
+  var newEmployee = document.getElementById(newEmployeeId);
+  newEmployee.classList.add('active');
+}
+
 var saveEmployee = document.getElementById('create-emloyee-form');
 
 saveEmployee.onsubmit = function (e) {
@@ -117,7 +152,8 @@ saveEmployee.onsubmit = function (e) {
 //  console.log(empl.skills());
   
   storeEmployee(empl);
-  drawUI();
+  drawEmplList();
+  addActive();
 };
 
 function storeEmployee(empl) {
@@ -127,35 +163,4 @@ function storeEmployee(empl) {
 
 function clearUI() {
   document.getElementById('create-emloyee-form').reset();//обнуляем все поля формы с помощь reset()
-}
-
-function drawUI() {
-  var employeesUl = document.querySelector(".block-employees_list");
-  while (employeesUl.hasChildNodes()) {
-    employeesUl.removeChild(employeesUl.firstChild);
-  }
-  var employees = [];
-  getAllItems(function (result) {
-    employees = result;
-  });
-  console.log(employees);
-
-  for (var i = 0; i < employees.length; i++) {
-    console.log(employees[i].id);//CHECK
-    var employeesLi = document.createElement('li');
-    var skillSet = employees[i].skills;
-    console.log(skillSet);
-    
-    for (var k = 0; k < skillSet.length; k++) {
-      var skillUl = '';
-      skillUl += '<li class="block-employees_block-employee_block-tags_tag">' + skillSet[k] +'</li>';
-    }
-    
-    employeesLi.innerHTML = '<div class="photo-block"><img src="images/photo-harry-potter.png" alt="Harry Potter foto"></div><h3 class="block-employees_block-employee_name">' + employees[i].name + ' ' + employees[i].surname + '</h3><p class="block-employees_block-employee_title">' + employees[i].level + ' ' + employees[i].title + '</p><ul class="block-employees_block-employee_block-tags">' + skillUl +'</ul>';
-    
-    employeesLi.setAttribute('id', employees[i].id);
-    var emplClass = 'block-employees_block-employee ' + employees[i].department + ' ';
-    employeesLi.setAttribute('class', emplClass);
-    employeesUl.appendChild(employeesLi);
-  }
 }
