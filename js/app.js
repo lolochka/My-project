@@ -131,4 +131,28 @@ function showDescript(employeeId) {
   previousEmpl.classList.remove('active');
   var currentEmpl = document.getElementById(employeeId);
   currentEmpl.classList.add('active');
+  var thisEmpl = JSON.parse(localStorage.getItem(employeeId));
+  console.log(thisEmpl);
+  
+  drawDescription(thisEmpl);
+  
+}
+
+function drawDescription(obj) {
+  var descTitle = document.querySelector('.block-emploee-description_title');
+  descTitle.innerHTML = obj.level + ' ' + obj.title;
+    
+  var descHeader = document.querySelector('.block-emploee-description_block-main-description_header');
+  var objEmail;
+  obj.email != 0 ? objEmail = '<div class="block-emploee-description_block-main-description_block-contacts_email"><span class="flaticon-send4"></span><a href="mailto:#" title="harry_potter@gmail.com">' + obj.email + '</a></div>' : objEmail = '';
+  
+  descHeader.innerHTML = '<aside class="block-emploee-description_block-main-description_block-contacts"><h3 class="block-emploee-description_block-main-description_block-contacts_heading">Contact information</h3><div class="block-emploee-description_block-main-description_block-contacts_skype"><span class="flaticon-skype12"></span>' + obj.skype + '</div>' + objEmail + '</aside><div class="photo-block"><img src="images/photo-harry-potter.png" alt="Harry Potter foto"></div><h3 class="block-emploee-description_block-name_name">' + obj.name + ' ' + obj.surname + '</h3><ul class="block-emploee-description_projects-list"><li class="block-emploee-description_projects-list_project">Quidich</li><li class="block-emploee-description_projects-list_project">Goblet of fire</li></ul><div class="wrapper block-emploee-description_block-main-description_contacts_line"></div>';
+  
+  
+  
+//  while (descTitle.hasChildNodes()) {
+//    descTitle.removeChild(descTitle.firstChild);
+//  }
+  
+    
 }
