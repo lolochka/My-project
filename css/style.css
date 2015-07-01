@@ -1,8 +1,13 @@
+html {
+   height: 100%;
+}
+
 body {
    background: url(images/bg-texture-pave1.png);
    font: 400 14px / 17.996px Noto Sans, sans-serif;
    color: #2e2e2e;
    overflow: auto;
+   height: 100%;
 }
 
 .wrapper {
@@ -15,6 +20,12 @@ a {
 
 a:hover, a:focus, a:active {
    color: #7421a4;
+}
+
+.footer-wrapper {
+   box-sizing: border-box;
+   min-height: 100%;
+   padding-bottom: 40px;
 }
 
 /*HEADER NAV BEGINS*/
@@ -141,7 +152,8 @@ a:hover, a:focus, a:active {
    font-size: 20px;
    font-weight: 700;
    padding-top: 6px;
-   height: 23px;
+   height: 50px;
+   vertical-align: middle;
    overflow: hidden;
    text-overflow: ellipsis;
    line-height: 20px;
@@ -314,7 +326,6 @@ a:hover, a:focus, a:active {
    margin-top: 3px;
 }
 
-
 .mobile {
    border-right: 5px solid #13d56e;
    transition: background-color 0.3s, color 0.2s;
@@ -325,12 +336,10 @@ a:hover, a:focus, a:active {
    transition: background-color 0.3s, color 0.2s;
 }
 
-
 .testing {
    border-right: 5px solid #13b3d5;
    transition: background-color 0.3s, color 0.2s;
 }
-
 
 .sales {
    border-right: 5px solid #7421a4;
@@ -340,6 +349,7 @@ a:hover, a:focus, a:active {
 .mobile:hover, .mobile:active, .mobile:focus, .mobile.active {
    background-color: #13d56e;
    color: #fff;
+   
 }
 
 .web:hover, .web:active, .web:focus, .web.active {
@@ -372,11 +382,13 @@ a:hover, a:focus, a:active {
    margin-top: 6px;
    height: 18px;
    overflow: hidden;
+   text-overflow: ellipsis;
 }
 
 .block-employees_block-employee_title {
    height: 18px;
-   overflow: hidden
+   overflow: hidden;
+   text-overflow: ellipsis;
 }
 
 .block-employees_block-employee_block-tags {
@@ -433,16 +445,16 @@ a:hover, a:focus, a:active {
    background-color: #fff;
    left: 50%;
    opacity: 1;
-   top: -50%;
+   top: -60%;
    position: absolute;
    visibility: hidden;
    z-index: 3;
    
-   -webkit-transform: translate(-50%, 10%);
-   -moz-transform: translate(-50%, 10%);
-   -ms-transform: translate(-50%, 10%);
-   -o-transform: translate(-50%, 10%%);
-   transform: translate(-50%, 10%);
+   -webkit-transform: translate(-50%, 2%);
+   -moz-transform: translate(-50%, 2%);
+   -ms-transform: translate(-50%, 2%);
+   -o-transform: translate(-50%, 2%);
+   transform: translate(-50%, 2%);
    
    -webkit-transition: opacity .5s, top .5s;
    -moz-transition: opacity .5s, top .5s;
@@ -456,6 +468,10 @@ a:hover, a:focus, a:active {
    opacity: 1;
    visibility: visible;
 }
+
+.overlay:target+.footer-overlay {
+      min-height: 150%;
+   }
 
 .heading-create-employee {
    padding: 0.5em 1em;
@@ -597,7 +613,7 @@ textarea {
 }
 
 input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button { 
+input[type=number]::-webkit-outer-spin-button,  { 
   -webkit-appearance: none; 
   margin: 0; 
 }
@@ -622,7 +638,9 @@ button[id="buton-create-employee"]:hover, button[id="buton-create-employee"]:act
 /*FOOTER BEGINS*/
 .block-footer{
    clear:  both;
-   margin-top: 25px;
+   box-sizing: border-box;
+   height: 44px;
+   margin-top: -44px;
    background-color: #585659;
    padding-top: 12px;
    padding-bottom: 12px;

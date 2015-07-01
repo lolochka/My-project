@@ -76,6 +76,7 @@ saveEmployee.onsubmit = function (e) {
   empl.otherUrl = emplOtherUrl.value;
   empl.skype = emplSkype.value;
   empl.email = emplEmail.value;
+  empl.comments = [];
  
   storeEmployee(empl);
   drawEmplList();
@@ -95,26 +96,25 @@ function showDescript(employeeId) {
 }
 
 function drawDescription(id) {
-  var obj = JSON.parse(localStorage.getItem(id));
-  console.log(obj);
+  var currentEmpl = JSON.parse(localStorage.getItem(id));
+  console.log(currentEmpl);
   
   var descHeader = document.querySelector('.block-emploee-description_header');
-  descHeader.innerHTML = '<div class="block-emploee-description_header_close" onclick="hideDescriptBlock()"></div><div class="block-header_edit-employee" onclick="deleteEmployee(' + obj.id + ')"><a href="#">Delete</a></div><h2 class="block-emploee-description_title">' + obj.level + ' ' + obj.title + '</h2><div class="wrapper"></div>';
+  descHeader.innerHTML = '<div class="block-emploee-description_header_close" onclick="hideDescriptBlock()"></div><div class="block-header_edit-employee" onclick="deleteEmployee(' + currentEmpl.id + ')"><a href="#">Delete</a></div><h2 class="block-emploee-description_title">' + currentEmpl.level + ' ' + currentEmpl.title + '</h2><div class="wrapper"></div>';
     
   var mainDescHeader = document.querySelector('.block-emploee-description_block-main-description_header');
-  var objEmail;
-  obj.email != 0 ? objEmail = '<div class="block-emploee-description_block-main-description_block-contacts_email"><span class="flaticon-send4"></span><a href="mailto:#" title="harry_potter@gmail.com">' + obj.email + '</a></div>' : objEmail = '';
+  var currentEmplEmail;
+  currentEmpl.email != 0 ? currentEmplEmail = '<div class="block-emploee-description_block-main-description_block-contacts_email"><span class="flaticon-send4"></span><a href="mailto:#" title="harry_potter@gmail.com">' + currentEmpl.email + '</a></div>' : currentEmplEmail = '';
   
-  mainDescHeader.innerHTML = '<aside class="block-emploee-description_block-main-description_block-contacts"><h3 class="block-emploee-description_block-main-description_block-contacts_heading">Contact information</h3><div class="block-emploee-description_block-main-description_block-contacts_skype"><span class="flaticon-skype12"></span>' + obj.skype + '</div>' + objEmail + '</aside><div class="photo-block"><img src="images/photo-harry-potter.png" alt="Harry Potter foto"></div><h3 class="block-emploee-description_block-name_name">' + obj.name + ' ' + obj.surname + '</h3><ul class="block-emploee-description_projects-list"><li class="block-emploee-description_projects-list_project">Quidich</li><li class="block-emploee-description_projects-list_project">Goblet of fire</li></ul><div class="wrapper block-emploee-description_block-main-description_contacts_line"></div>';
-  
+  mainDescHeader.innerHTML = '<aside class="block-emploee-description_block-main-description_block-contacts"><h3 class="block-emploee-description_block-main-description_block-contacts_heading">Contact information</h3><div class="block-emploee-description_block-main-description_block-contacts_skype"><span class="flaticon-skype12"></span>' + currentEmpl.skype + '</div>' + currentEmplEmail + '</aside><div class="photo-block"><img src="images/photo-harry-potter.png" alt="Harry Potter foto"></div><h3 class="block-emploee-description_block-name_name">' + currentEmpl.name + ' ' + currentEmpl.surname + '</h3><div class="wrapper block-emploee-description_block-main-description_contacts_line"></div>';
   var descBody = document.querySelector('.block-emploee-description_description');
-  var objManager;
-  obj.manager != 0 ? objManager = '<p class="block-emploee-description_block-main-description_manager">Manager: <span class="block-emploee-description_block-main-description_manager-label">' + obj.manager + '</span></p>' : objManager = '';
+  var currentEmplManager;
+  currentEmpl.manager != 0 ? currentEmplManager = '<p class="block-emploee-description_block-main-description_manager">Manager: <span class="block-emploee-description_block-main-description_manager-label">' + currentEmpl.manager + '</span></p>' : currentEmplManager = '';
   
-  var objExperience;
-  if (obj.years != 0 && obj.month != 0 ) {
-    var month = obj.month;
-    var year = obj.year;
+  var currentEmplExperience;
+  if (currentEmpl.years != 0 && currentEmpl.month != 0 ) {
+    var month = currentEmpl.month;
+    var year = currentEmpl.year;
     var date = new Date();
     var nowMonth = date.getMonth();
     var nowYear = date.getFullYear();
@@ -124,53 +124,52 @@ function drawDescription(id) {
     year == 0 ? diffYear = 0 : diffYear = nowYear - year;
     if (diffMonth > 0) {
       if (diffYear > 0) {
-        objExperience = '<p class="block-emploee-description_block-main-description_years">Years of experience: <span class="block-emploee-description_block-main-description_years-label">' + diffYear + ' year(s) and ' + diffMonth + ' month(es)</span></p>';
+        currentEmplExperience = '<p class="block-emploee-description_block-main-description_years">Years of experience: <span class="block-emploee-description_block-main-description_years-label">' + diffYear + ' year(s) and ' + diffMonth + ' month(es)</span></p>';
       } else if (diffYear == 0) {
-        objExperience = '<p class="block-emploee-description_block-main-description_years">Years of experience: <span class="block-emploee-description_block-main-description_years-label">' + diffMonth + ' month(es)</span></p>';
+        currentEmplExperience = '<p class="block-emploee-description_block-main-description_years">Years of experience: <span class="block-emploee-description_block-main-description_years-label">' + diffMonth + ' month(es)</span></p>';
       } else {
-        objExperience = '<p class="block-emploee-description_block-main-description_years">Years of experience: <span class="block-emploee-description_block-main-description_years-label">Have not started yet</span></p>';
+        currentEmplExperience = '<p class="block-emploee-description_block-main-description_years">Years of experience: <span class="block-emploee-description_block-main-description_years-label">Have not started yet</span></p>';
       }
-      
     } else if (diffMonth == 0) {
       if (diffYear > 0) {
-        objExperience = '<p class="block-emploee-description_block-main-description_years">Years of experience: <span class="block-emploee-description_block-main-description_years-label">' + diffYear + ' year(s)</span></p>';
+        currentEmplExperience = '<p class="block-emploee-description_block-main-description_years">Years of experience: <span class="block-emploee-description_block-main-description_years-label">' + diffYear + ' year(s)</span></p>';
       } else if (diffYear == 0) {
-        objExperience = '<p class="block-emploee-description_block-main-description_years">Years of experience: <span class="block-emploee-description_block-main-description_years-label">Do not have any experience</span></p>';
+        currentEmplExperience = '<p class="block-emploee-description_block-main-description_years">Years of experience: <span class="block-emploee-description_block-main-description_years-label">Do not have any experience</span></p>';
       } else {
-        objExperience = '<p class="block-emploee-description_block-main-description_years">Years of experience: <span class="block-emploee-description_block-main-description_years-label">Have not started yet</span></p>';
-      }
-      
+        currentEmplExperience = '<p class="block-emploee-description_block-main-description_years">Years of experience: <span class="block-emploee-description_block-main-description_years-label">Have not started yet</span></p>';
+      } 
     } else {
       diffMonth = diffMonth + 12;
       diffYear = diffYear - 1;
       if (diffYear > 0) {
-        experience = '<p class="block-emploee-description_block-main-description_years">Years of experience: <span class="block-emploee-description_block-main-description_years-label">' + diffYear + ' year(s) and ' + diffMonth + ' month(es)</span></p>';
+        currentEmplExperience = '<p class="block-emploee-description_block-main-description_years">Years of experience: <span class="block-emploee-description_block-main-description_years-label">' + diffYear + ' year(s) and ' + diffMonth + ' month(es)</span></p>';
       } else if (diffYear === 0) {
-        experience = '<p class="block-emploee-description_block-main-description_years">Years of experience: <span class="block-emploee-description_block-main-description_years-label">' + diffMonth + ' month(es)</span></p>';
+        currentEmplExperience = '<p class="block-emploee-description_block-main-description_years">Years of experience: <span class="block-emploee-description_block-main-description_years-label">' + diffMonth + ' month(es)</span></p>';
       } else {
-        experience = '<p class="block-emploee-description_block-main-description_years">Years of experience: <span class="block-emploee-description_block-main-description_years-label">Have not started yet</span></p>';
+        currentEmplExperience = '<p class="block-emploee-description_block-main-description_years">Years of experience: <span class="block-emploee-description_block-main-description_years-label">Have not started yet</span></p>';
       }
     }//need compile
   } else {
-    objExperience = '';
+    currentEmplExperience = '';
   }
   
-  var skills = obj.skills;
+  var skills = currentEmpl.skills;
   skillSet = skills.join('</li><li class="block-emploee-description_block-main-description_tags-list_tag">')
-  var objSkillSet = '<p class="block-emploee-description_block-main-description_skills-label">Primary skills:</p><ul class="block-emploee-description_block-main-description_tags-list"><li class="block-emploee-description_block-main-description_tags-list_tag">' + skillSet + '</li></ul>';
+  var currentEmplSkillSet = '<p class="block-emploee-description_block-main-description_skills-label">Primary skills:</p><ul class="block-emploee-description_block-main-description_tags-list"><li class="block-emploee-description_block-main-description_tags-list_tag">' + skillSet + '</li></ul>';
   
+  var currentEmplLd;
+  currentEmpl.ldUrl != 0 ? currentEmplLd = '<li class="block-emploee-description_block-main-description_links-list_link link-linkedin"><a href="' + currentEmpl.ldUrl + '" title="' + currentEmpl.ldUrl + '">' + currentEmpl.ldUrl + '</a></li>' : currentEmplLd = '';
+  var currentEmplBh;
+  currentEmpl.bhUrl != 0 ? currentEmplBh = '<li class="block-emploee-description_block-main-description_links-list_link link-linkedin"><a href="' + currentEmpl.bhUrl + '" title="' + currentEmpl.bhUrl + '">' + currentEmpl.bhUrl + '</a></li>' : currentEmplBh = '';
+  var currentEmplOtherUrl;
+  currentEmpl.otherUrl != 0 ? currentEmplOtherUrl = '<li class="block-emploee-description_block-main-description_links-list_link link-linkedin"><a href="' + currentEmpl.otherUrl + '" title="' + currentEmpl.otherUrl + '">' + currentEmpl.otherUrl + '</a></li>' : currentEmplOtherUrl = '';
   
-  var objL;
-  obj.ldUrl != 0 ? objLd = '<li class="block-emploee-description_block-main-description_links-list_link link-linkedin"><a href="' + obj.ldUrl + '" title="' + obj.ldUrl + '">' + obj.ldUrl + '</a></li>' : objLd = '';
-  var objBh;
-  obj.bhUrl != 0 ? objBh = '<li class="block-emploee-description_block-main-description_links-list_link link-linkedin"><a href="' + obj.bhUrl + '" title="' + obj.bhUrl + '">' + obj.bhUrl + '</a></li>' : objBh = '';
-  var objOtherUrl;
-  obj.otherUrl != 0 ? objOtherUrl = '<li class="block-emploee-description_block-main-description_links-list_link link-linkedin"><a href="' + obj.otherUrl + '" title="' + obj.otherUrl + '">' + obj.otherUrl + '</a></li>' : objOtherUrl = '';
+  var currentEmplUrls;
+  currentEmpl.ldUrl != 0 || currentEmpl.bhUrl != 0 || currentEmpl.otherUrl != 0 ? currentEmplUrls = '<p class="block-emploee-description_block-main-description_links_label">Links:</p><ul class="block-emploee-description_block-main-description_links-list">' + currentEmplLd + currentEmplBh + currentEmplOtherUrl + '</ul>' : currentEmplUrls = '';
   
-  var objUrls;
-  obj.ldUrl != 0 || obj.bhUrl != 0 || obj.otherUrl != 0 ? objUrls = '<p class="block-emploee-description_block-main-description_links_label">Links:</p><ul class="block-emploee-description_block-main-description_links-list">' + objLd + objBh + objOtherUrl + '</ul>' : objUrls = '';
-  
-  descBody.innerHTML = '<p class="block-emploee-description_list-description_department">Department: <span class="block-emploee-description_list-description_department-label">' + obj.department + '</span></p>' + objManager + objExperience + objSkillSet + objUrls;    
+  descBody.innerHTML = '<p class="block-emploee-description_list-description_department">Department: <span class="block-emploee-description_list-description_department-label">' + currentEmpl.department + '</span></p>' + currentEmplManager + currentEmplExperience + currentEmplSkillSet + currentEmplUrls;    
+  var commentsBlock = document.querySelector('.block-emploee-description_block-comments');
+  commentsBlock.innerHTML = '<h4 class="block-emploee-description_block-comments_title">Comments (8):</h4><div class="block-emploee-description_block-comments_comment"><p class="block-emploee-description_block-comments_author">Albus Dambledore</p><p class="block-emploee-description_block-comments_comment-time" ><time datetime="2015-04-05">April 5,2015</time></p><p class="block-emploee-description_block-comments_comment-text">Harry, never forget that what the prophecy says is only significant because Voldemort made it so. I told you this at the end of last year. Voldemort singled you out as the person who would be most dangerous to him — and in doing so, he made you the person who would be most dangerous to him!</p></div><form class="block-emploee-description_block-comments_form" method="get" action="#" id="comment-form"><textarea name="comment" class="block-emploee-description_block-comments_form" placeholder="Insert your comment here"></textarea><div class="block-emploee-description_block-comments_form_button-block"><button type="submit" class="block-emploee-description_block-comments_form_button" id="send-comment">Submit</button></div></form>'
 }
 
 function showDescriptBlock() {
@@ -179,6 +178,7 @@ function showDescriptBlock() {
 }
 
 function hideDescriptBlock() {
+  document.querySelector('.active').classList.remove('active');
   var descBlock = document.querySelector('.block-emploee-description');
   descBlock.style.display = '';
 }
@@ -195,4 +195,15 @@ function clearDescript() {
   mainDescHeader.innerHTML = 'Use button under the list to add new employee';
   var descBody = document.querySelector('.block-emploee-description_description');
   descBody.innerHTML = '';
+}
+
+var formOverlay = document.querySelector('#add-employee');
+var formExitButton = document.querySelector('.heading-create-employee_close');
+
+formOverlay.onclick = function(e) {
+  document.getElementById('create-emloyee-form').reset();
+}
+
+formExitButton.onclick = function(e) {
+  document.getElementById('create-emloyee-form').reset();
 }
