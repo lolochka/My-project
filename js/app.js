@@ -169,7 +169,7 @@ function drawDescription(id) {
   
   descBody.innerHTML = '<p class="block-emploee-description_list-description_department">Department: <span class="block-emploee-description_list-description_department-label">' + currentEmpl.department + '</span></p>' + currentEmplManager + currentEmplExperience + currentEmplSkillSet + currentEmplUrls;    
   var commentsBlock = document.querySelector('.block-emploee-description_block-comments');
-  commentsBlock.innerHTML = '<h4 class="block-emploee-description_block-comments_title">Comments (8):</h4><div class="block-emploee-description_block-comments_comment"><p class="block-emploee-description_block-comments_author">Albus Dambledore</p><p class="block-emploee-description_block-comments_comment-time" ><time datetime="2015-04-05">April 5,2015</time></p><p class="block-emploee-description_block-comments_comment-text">Harry, never forget that what the prophecy says is only significant because Voldemort made it so. I told you this at the end of last year. Voldemort singled you out as the person who would be most dangerous to him — and in doing so, he made you the person who would be most dangerous to him!</p></div><form class="block-emploee-description_block-comments_form" method="get" action="#" id="comment-form"><textarea name="comment" class="block-emploee-description_block-comments_form" placeholder="Insert your comment here"></textarea><div class="block-emploee-description_block-comments_form_button-block"><button type="submit" class="block-emploee-description_block-comments_form_button" id="send-comment">Submit</button></div></form>'
+  commentsBlock.innerHTML = '<h4 class="block-emploee-description_block-comments_title">Comments (8):</h4><div class="block-emploee-description_block-comments_comment"><p class="block-emploee-description_block-comments_author">Albus Dambledore</p><p class="block-emploee-description_block-comments_comment-time" ><time datetime="2015-04-05">April 5,2015</time></p><p class="block-emploee-description_block-comments_comment-text">Harry, never forget that what the prophecy says is only significant because Voldemort made it so. I told you this at the end of last year. Voldemort singled you out as the person who would be most dangerous to him — and in doing so, he made you the person who would be most dangerous to him!</p></div><form class="block-emploee-description_block-comments_form" method="get" action="#" id="comment-form"><textarea name="comment" class="block-emploee-description_block-comments_form" placeholder="Insert your comment here"></textarea><div class="block-emploee-description_block-comments_form_button-block"><button class="block-emploee-description_block-comments_form_button" id="send-comment">Submit</button></div></form>'
 }
 
 function showDescriptBlock() {
@@ -192,9 +192,9 @@ function deleteEmployee(id) {
 
 function clearDescript() {
   var descHeader = document.querySelector('.block-emploee-description_header');
-  descHeader.innerHTML = '<h2 class="block-emploee-description_title">Dear friend, you have removed all your employees!</h2><div class="wrapper"></div>'
+  descHeader.innerHTML = '<h2 class="block-emploee-description_title">Add employees!</h2><div class="wrapper"></div>'
   var mainDescHeader = document.querySelector('.block-emploee-description_block-main-description_header');
-  mainDescHeader.innerHTML = 'Use button under the list to add new employee';
+  mainDescHeader.innerHTML = 'Use button "Add employee" list to add new employee';
   var descBody = document.querySelector('.block-emploee-description_description');
   descBody.innerHTML = '';
 }
