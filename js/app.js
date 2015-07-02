@@ -175,15 +175,17 @@ function drawDescription(id) {
 function showDescriptBlock() {
   var descBlock = document.querySelector('.block-emploee-description');
   descBlock.style.display = 'block';
+  up();
 }
 
 function hideDescriptBlock() {
-  document.querySelector('.active').classList.remove('active');
+//  document.querySelector('.active').classList.remove('active');
   var descBlock = document.querySelector('.block-emploee-description');
   descBlock.style.display = '';
 }
 
 function deleteEmployee(id) {
+  hideDescriptBlock();
   deleteItem(id);
   drawEmplList();
 }
@@ -202,8 +204,21 @@ var formExitButton = document.querySelector('.heading-create-employee_close');
 
 formOverlay.onclick = function(e) {
   document.getElementById('create-emloyee-form').reset();
+  up();
 }
 
 formExitButton.onclick = function(e) {
   document.getElementById('create-emloyee-form').reset();
+  up();
+}
+
+
+var t;
+function up() {
+  var top = Math.max(document.body.scrollTop,document.documentElement.scrollTop);
+  if(top > 0) {
+    window.scrollBy(0,-100);
+    t = setTimeout('up()',20);
+  } else clearTimeout(t);
+    return false;
 }

@@ -449,6 +449,7 @@ a:hover, a:focus, a:active {
    position: absolute;
    visibility: hidden;
    z-index: 3;
+   display: none;
    
    -webkit-transform: translate(-50%, 2%);
    -moz-transform: translate(-50%, 2%);
@@ -467,6 +468,7 @@ a:hover, a:focus, a:active {
    top: 0;
    opacity: 1;
    visibility: visible;
+   display: block;
 }
 
 .overlay:target+.footer-overlay {
