@@ -293,6 +293,17 @@ a:hover, a:focus, a:active {
    padding: 11px 56px;
    border-radius: 10px;
    color: #fff;
+   cursor: pointer;
+   -webkit-transition: background-color 0.3s, color 0.3s;
+   -moz-transition: background-color 0.3s, color .3s;
+   -ms-transition: background-color 0.3s, color .3s;
+   -o-transition: background-color 0.3s, color 0.3s;
+   transition: background-color 0.3s, color 0.3s;
+}
+
+.block-emploee-description_block-comments_form_button:hover, .block-emploee-description_block-comments_form_button:active, .block-emploee-description_block-comments_form_button:focus {
+   color: #c0c0c0;
+   background-color: #4c0f6e;
 }
 
 /*COMMENTS BLOCK ENDS*/
@@ -629,10 +640,16 @@ button[id="buton-create-employee"] {
    background: url(images/Shape-6-copy.png) no-repeat #651493;
    background-position: 10px 50%;
    cursor: pointer;
+   -webkit-transition: background-color 0.3s, color 0.3s;
+   -moz-transition: background-color 0.3s, color .3s;
+   -ms-transition: background-color 0.3s, color .3s;
+   -o-transition: background-color 0.3s, color 0.3s;
+   transition: background-color 0.3s, color 0.3s;
 }
 
 button[id="buton-create-employee"]:hover, button[id="buton-create-employee"]:active, button[id="buton-create-employee"]:focus {
    color: #c0c0c0;
+   background-color: #4c0f6e;
 }
 /*FORM ENDS*/
 /*FORM CREATE NEW EMPLOYEE ENDS*/
