@@ -28,8 +28,8 @@ function drawEmplList() {
     var newEmployeeId = employees[j].id;
     var newEmployee = document.getElementById(newEmployeeId);
     newEmployee.classList.add('active');
-    console.log(newEmployeeId); 
-    drawDescription(newEmployeeId);
+    console.log(newEmployeeId);
+    drawDescription(employees[j]);
   } else {
     clearDescript();
   }
@@ -91,14 +91,14 @@ function showDescript(employeeId) {
   previousEmpl.classList.remove('active');
   var currentEmpl = document.getElementById(employeeId);
   currentEmpl.classList.add('active');
-  drawDescription(employeeId);
+  var thisEmpl = JSON.parse(localStorage.getItem(employeeId));
+  console.log(thisEmpl)
   showDescriptBlock();
+  drawDescription(thisEmpl);
 }
 
-function drawDescription(id) {
-  var currentEmpl = JSON.parse(localStorage.getItem(id));
-  console.log(currentEmpl);
-  
+function drawDescription(currentEmpl) {
+    
   var descHeader = document.querySelector('.block-emploee-description_header');
   descHeader.innerHTML = '<div class="block-emploee-description_header_close" onclick="hideDescriptBlock()"></div><div class="block-header_edit-employee" onclick="deleteEmployee(' + currentEmpl.id + ')"><a href="#">Delete</a></div><h2 class="block-emploee-description_title">' + currentEmpl.level + ' ' + currentEmpl.title + '</h2><div class="wrapper"></div>';
     
@@ -167,9 +167,18 @@ function drawDescription(id) {
   var currentEmplUrls;
   currentEmpl.ldUrl != 0 || currentEmpl.bhUrl != 0 || currentEmpl.otherUrl != 0 ? currentEmplUrls = '<p class="block-emploee-description_block-main-description_links_label">Links:</p><ul class="block-emploee-description_block-main-description_links-list">' + currentEmplLd + currentEmplBh + currentEmplOtherUrl + '</ul>' : currentEmplUrls = '';
   
-  descBody.innerHTML = '<p class="block-emploee-description_list-description_department">Department: <span class="block-emploee-description_list-description_department-label">' + currentEmpl.department + '</span></p>' + currentEmplManager + currentEmplExperience + currentEmplSkillSet + currentEmplUrls;    
+  descBody.innerHTML = '<p class="block-emploee-description_list-description_department">Department: <span class="block-emploee-description_list-description_department-label">' + currentEmpl.department + '</span></p>' + currentEmplManager + currentEmplExperience + currentEmplSkillSet + currentEmplUrls;  
+  
+  var currentEmplComments = currentEmpl.comments;
   var commentsBlock = document.querySelector('.block-emploee-description_block-comments');
-  commentsBlock.innerHTML = '<h4 class="block-emploee-description_block-comments_title">Comments (8):</h4><div class="block-emploee-description_block-comments_comment"><p class="block-emploee-description_block-comments_author">Albus Dambledore</p><p class="block-emploee-description_block-comments_comment-time" ><time datetime="2015-04-05">April 5,2015</time></p><p class="block-emploee-description_block-comments_comment-text">Harry, never forget that what the prophecy says is only significant because Voldemort made it so. I told you this at the end of last year. Voldemort singled you out as the person who would be most dangerous to him — and in doing so, he made you the person who would be most dangerous to him!</p></div><form class="block-emploee-description_block-comments_form" method="get" action="#" id="comment-form"><textarea name="comment" class="block-emploee-description_block-comments_form" placeholder="Insert your comment here"></textarea><div class="block-emploee-description_block-comments_form_button-block"><button class="block-emploee-description_block-comments_form_button" id="send-comment">Submit</button></div></form>'
+  commentsBlock.innerHTML = '<h4 class="block-emploee-description_block-comments_title">Comments (' + currentEmplComments.length + '):</h4><div id="all-comments"></div><form class="block-emploee-description_block-comments_form" method="get" action="#" id="comment-form"><textarea name="comment" class="block-emploee-description_block-comments_form" placeholder="Insert your comment here"></textarea><div class="block-emploee-description_block-comments_form_button-block"><button type="submit" class="block-emploee-description_block-comments_form_button" id="send-comment">Submit</button></div></form>';
+  
+  if ( currentEmplComments.length != 0 ) {
+    for (i = 0; i < currentEmplComments.length; i++ ) {
+      drawComment(currentEmplComments[i]);
+      console.log(currentEmplComments[i]);
+    }
+  }
 }
 
 function showDescriptBlock() {
@@ -191,12 +200,10 @@ function deleteEmployee(id) {
 }
 
 function clearDescript() {
-  var descHeader = document.querySelector('.block-emploee-description_header');
-  descHeader.innerHTML = '<h2 class="block-emploee-description_title">Add employees!</h2><div class="wrapper"></div>'
-  var mainDescHeader = document.querySelector('.block-emploee-description_block-main-description_header');
-  mainDescHeader.innerHTML = 'Use button "Add employee" list to add new employee';
-  var descBody = document.querySelector('.block-emploee-description_description');
-  descBody.innerHTML = '';
+  var descHeader = document.querySelector('.block-emploee-description_header').innerHTML = '<h2 class="block-emploee-description_title">Add employees!</h2><div class="wrapper"></div>'
+  var mainDescHeader = document.querySelector('.block-emploee-description_block-main-description_header').innerHTML = 'Use button "Add employee" list to add new employee';
+  var descBody = document.querySelector('.block-emploee-description_description').innerHTML = '';
+  var comments = document.querySelector('.block-emploee-description_block-comments').innerHTML = '';
 }
 
 var formOverlay = document.querySelector('#add-employee');
@@ -212,7 +219,6 @@ formExitButton.onclick = function(e) {
   up();
 }
 
-
 var t;
 function up() {
   var top = Math.max(document.body.scrollTop,document.documentElement.scrollTop);
@@ -221,4 +227,31 @@ function up() {
     t = setTimeout('up()',20);
   } else clearTimeout(t);
     return false;
+}
+
+function drawComment(message) {
+  var newMessage = document.createElement('div');
+  var messageDate = formatDate(message.date);
+  var allCommnets = document.getElementById('all-comments');
+  allCommnets.appendChild(newMessage);
+  console.log(messageDate);
+  newMessage.innerHTML = '<p class="block-emploee-description_block-comments_author">' + message.username + '</p><p class="block-emploee-description_block-comments_comment-time" ><time datetime="' + message.date + '">' + messageDate + '</time></p><p class="block-emploee-description_block-comments_comment-text">' + message.text + '</p>';
+  newMessage.setAttribute('class', 'block-emploee-description_block-comments_comment');
+}
+
+function formatDate(date) {
+  var dt;
+  var diff = new Date() - date;
+  var sec = Math.floor(diff / 1000); 
+  if (sec < 60) {
+    dt = 'just now';
+    return dt;
+  }
+  var min = Math.floor(diff / 60000);
+  if (min < 60) {
+    dt = min + ' minutes ago';
+    return dt;
+  }
+  dt = date;
+  return dt.substr(0, 10) + ' ' + dt.substr(11, 5);
 }

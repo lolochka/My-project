@@ -102,6 +102,7 @@ a:hover, a:focus, a:active {
    box-sizing: border-box;
    margin-left: 420px;
    background-color: #fff;
+   min-height: 200px;
 }
 
 
@@ -117,12 +118,27 @@ a:hover, a:focus, a:active {
    height: 20px;
    width: 20px;
    float: right;
-   background: url(images/exit.png) no-repeat;
+   background: url(images/exit.png) no-repeat 5px 5px;
    cursor: pointer;
    height: 22px;
    width: 24px;
-   margin: 14px 15px;
-   display: none;
+   margin: 8px 16px;
+   padding: 5px;
+   -webkit-border-radius: 50%;
+   -moz-border-radius: 50%;
+   -ms-border-radius: 50%;
+   -o-border-radius: 50%;
+   border-radius: 50%;
+   -webkit-transition: background-color 0.3s;
+   -moz-transition: background-color 0.3s;
+   -ms-transition: background-color 0.3s;
+   -o-transition: background-color 0.3s;
+   transition: background-color 0.3s;
+   display: none; 
+}
+
+.block-emploee-description_header_close:hover, .block-emploee-description_header_close:focus, .block-emploee-description_header_close:active {
+  background-color: #464447;
 }
 /*DESCRIPTION HEADER ENDS*/
 
@@ -276,7 +292,7 @@ a:hover, a:focus, a:active {
 
 .block-emploee-description_block-comments_comment {
    background-color: #fbf5ff;
-   padding: 21px;
+   padding: 10px;
    margin-bottom: 15px;
 }
 
@@ -286,6 +302,8 @@ a:hover, a:focus, a:active {
 
 .block-emploee-description_block-comments_comment-time {
    margin-bottom: 5px;
+   font-size: 12px;
+   font-style: italic;
 }
 
 .block-emploee-description_block-comments_form_button {
@@ -315,6 +333,7 @@ a:hover, a:focus, a:active {
    width: 400px;
    background-color: #fff;
    margin-right: -400px;
+   min-height: 200px;
 }
 
 .block-employees_title {
@@ -334,7 +353,7 @@ a:hover, a:focus, a:active {
    padding-top: 3px;
    padding: 4px;
    margin-right: 9px;
-   margin-top: 3px;
+   margin-top: 10px;
 }
 
 .mobile {
@@ -499,10 +518,18 @@ a:hover, a:focus, a:active {
    width: 20px;
    float: right;
    background: url(images/exit.png) no-repeat;
+   background-position: 5px 5px;
    cursor: pointer;
    height: 22px;
    width: 24px;
-   margin: 14px 15px;
+   margin: 8px 16px;
+   padding: 5px;
+   border-radius: 50%;
+   transition: background-color 0.3s;
+}
+
+.heading-create-employee_close:focus, .heading-create-employee_close:hover, .heading-create-employee_close:active {
+   background-color: #651493;
 }
 
 .create-emloyee-form {
