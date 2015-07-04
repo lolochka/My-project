@@ -296,6 +296,26 @@ a:hover, a:focus, a:active {
    margin-bottom: 15px;
 }
 
+.block-emploee-description_block-comments_remove-comment {
+   float: right;
+   font-size: 16px;
+   color: #fff;
+   color: #651493;
+   visibility: hidden;
+   opacity: 0;
+   -webkit-transition: opacity .3s;
+   -moz-transition: opacity .3s;
+   -ms-transition: opacity .3s;
+   -o-transition: opacity .3s;
+   transition: opacity .3s;
+   cursor: pointer;
+}
+
+.block-emploee-description_block-comments_comment:hover>.block-emploee-description_block-comments_remove-comment, .block-emploee-description_block-comments_comment:focus>.block-emploee-description_block-comments_remove-comment, .block-emploee-description_block-comments_comment:active>.block-emploee-description_block-comments_remove-comment {
+   opacity: 1;
+   visibility: visible;
+}
+
 .block-emploee-description_block-comments_author {
    font-weight: 700;
 }
@@ -474,8 +494,8 @@ a:hover, a:focus, a:active {
    max-width: 400px;
    background-color: #fff;
    left: 50%;
-   opacity: 1;
-   top: -60%;
+   top: 10%;
+   opacity: 0;
    position: absolute;
    visibility: hidden;
    z-index: 3;
@@ -487,11 +507,11 @@ a:hover, a:focus, a:active {
    -o-transform: translate(-50%, 2%);
    transform: translate(-50%, 2%);
    
-   -webkit-transition: opacity .5s, top .5s;
-   -moz-transition: opacity .5s, top .5s;
-   -ms-transition: opacity .5s, top .5s;
-   -o-transition: opacity .5s, top .5s;
-   transition: opacity .5s, top .5s;
+   -webkit-transition: opacity .5s, display .5s;
+   -moz-transition: opacity .5s, display .5s;
+   -ms-transition: opacity .5s, display .5s;
+   -o-transition: opacity .5s, display .5s;
+   transition: opacity .5s, display .5s;
 }
 
 .overlay:target+.block-create-employee {
@@ -501,9 +521,9 @@ a:hover, a:focus, a:active {
    display: block;
 }
 
-.overlay:target+.footer-overlay {
-      min-height: 150%;
-   }
+.overlay:target~.block-footer {
+   margin-top: 100px;
+}
 
 .heading-create-employee {
    padding: 0.5em 1em;
@@ -712,4 +732,3 @@ button[id="buton-create-employee"]:hover, button[id="buton-create-employee"]:act
 }
 
 /* FOOTER ENDS*/
-

@@ -171,12 +171,13 @@ function drawDescription(currentEmpl) {
   
   var currentEmplComments = currentEmpl.comments;
   var commentsBlock = document.querySelector('.block-emploee-description_block-comments');
-  commentsBlock.innerHTML = '<h4 class="block-emploee-description_block-comments_title">Comments (' + currentEmplComments.length + '):</h4><div id="all-comments"></div><form class="block-emploee-description_block-comments_form" method="get" action="#" id="comment-form"><textarea name="comment" class="block-emploee-description_block-comments_form" placeholder="Insert your comment here"></textarea><div class="block-emploee-description_block-comments_form_button-block"><button type="submit" class="block-emploee-description_block-comments_form_button" id="send-comment">Submit</button></div></form>';
+  commentsBlock.innerHTML = '<h4 class="block-emploee-description_block-comments_title">Comments (' + currentEmplComments.length + '):</h4><div id="all-comments"></div><div class="block-emploee-description_block-comments_form" method="get" action="#" id="comment-form"><textarea name="comment" class="block-emploee-description_block-comments_form" placeholder="Insert your comment here"></textarea><div class="block-emploee-description_block-comments_form_button-block"><button  class="block-emploee-description_block-comments_form_button" id="send-comment" onclick="addComment()">Submit</button></div></div>';
   
   if ( currentEmplComments.length != 0 ) {
     for (i = 0; i < currentEmplComments.length; i++ ) {
       drawComment(currentEmplComments[i]);
       console.log(currentEmplComments[i]);
+      
     }
   }
 }
@@ -232,11 +233,14 @@ function up() {
 function drawComment(message) {
   var newMessage = document.createElement('div');
   var messageDate = formatDate(message.date);
-  var allCommnets = document.getElementById('all-comments');
-  allCommnets.appendChild(newMessage);
+  var allComments = document.getElementById('all-comments');
+  allComments.appendChild(newMessage);
   console.log(messageDate);
-  newMessage.innerHTML = '<p class="block-emploee-description_block-comments_author">' + message.username + '</p><p class="block-emploee-description_block-comments_comment-time" ><time datetime="' + message.date + '">' + messageDate + '</time></p><p class="block-emploee-description_block-comments_comment-text">' + message.text + '</p>';
+  newMessage.innerHTML = '<div class="block-emploee-description_block-comments_remove-comment">x</div><p class="block-emploee-description_block-comments_author">' + message.username + '</p><p class="block-emploee-description_block-comments_comment-time" ><time datetime="' + message.date + '">' + messageDate + '</time></p><p class="block-emploee-description_block-comments_comment-text">' + message.text + '</p>';
   newMessage.setAttribute('class', 'block-emploee-description_block-comments_comment');
+  console.log(length);
+  console.log(message.empl);
+  deleteComment(message.empl);
 }
 
 function formatDate(date) {
@@ -254,4 +258,22 @@ function formatDate(date) {
   }
   dt = date;
   return dt.substr(0, 10) + ' ' + dt.substr(11, 5);
+}
+
+function deleteComment(id) {
+  var buttons = document.querySelectorAll('#comments-block .block-emploee-description_block-comments_remove-comment');
+  for (var i = 0; i < buttons.length; i++) {
+    var button = buttons[i];
+    button.onclick = function () {
+      var empl = JSON.parse(localStorage.getItem(id));
+      var comments = empl.comments;
+      var el = this.parentNode;
+      el.parentNode.removeChild(el);
+      i = i - 1;
+      comments.splice(i, 1);
+      console.log(comments);
+      addItem(id, empl);
+      document.querySelector('.block-emploee-description_block-comments_title').innerHTML = 'Comments (' + comments.length + '):';
+    }
+  }
 }
