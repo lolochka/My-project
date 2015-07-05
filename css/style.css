@@ -522,7 +522,7 @@ a:hover, a:focus, a:active {
 }
 
 .overlay:target~.block-footer {
-   margin-top: 100px;
+   display: none;
 }
 
 .heading-create-employee {

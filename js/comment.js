@@ -16,7 +16,7 @@ function addComment() {
     comment.empl = currentEmpl.id;
 
     storeComment(id, currentEmpl, comment);
-    drawComment(comment, currentEmplComments.length);
+    drawComment(comment);
     document.querySelector('textarea[name="comment"]').value = '';
     document.querySelector('.block-emploee-description_block-comments_title').innerHTML = 'Comments (' + currentEmplComments.length + '):';
     

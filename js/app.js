@@ -185,6 +185,9 @@ function drawDescription(currentEmpl) {
 function showDescriptBlock() {
   var descBlock = document.querySelector('.block-emploee-description');
   descBlock.style.display = 'block';
+  var descOverlay = document.querySelector('.description-overlay');
+  descOverlay.style.visibility = 'visible';
+  descOverlay.style.opacity = '1';
   up();
 }
 
@@ -192,6 +195,9 @@ function hideDescriptBlock() {
 //  document.querySelector('.active').classList.remove('active');
   var descBlock = document.querySelector('.block-emploee-description');
   descBlock.style.display = '';
+  var descOverlay = document.querySelector('.description-overlay');
+  descOverlay.style.visibility = '';
+  descOverlay.style.opacity = '';
 }
 
 function deleteEmployee(id) {
@@ -264,16 +270,18 @@ function deleteComment(id) {
   var buttons = document.querySelectorAll('#comments-block .block-emploee-description_block-comments_remove-comment');
   for (var i = 0; i < buttons.length; i++) {
     var button = buttons[i];
+    button.setAttribute('id', i);
     button.onclick = function () {
       var empl = JSON.parse(localStorage.getItem(id));
       var comments = empl.comments;
       var el = this.parentNode;
+      var k = this.id;
       el.parentNode.removeChild(el);
-      i = i - 1;
-      comments.splice(i, 1);
+      comments.splice(k, 1);
       console.log(comments);
       addItem(id, empl);
       document.querySelector('.block-emploee-description_block-comments_title').innerHTML = 'Comments (' + comments.length + '):';
+      deleteComment(id)
     }
   }
 }
