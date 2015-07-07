@@ -35,9 +35,9 @@ function drawEmplList() {
   }
 }
 
-var saveEmployee = document.getElementById('create-emloyee-form');
+var saveEmployeeForm = document.getElementById('create-emloyee-form');
 
-saveEmployee.onsubmit = function (e) {
+saveEmployeeForm.onsubmit = function (e) {
   var empl = {};
   
   var emplName = document.querySelector("input[name='empl-name']");
@@ -77,13 +77,39 @@ saveEmployee.onsubmit = function (e) {
   empl.skype = emplSkype.value;
   empl.email = emplEmail.value;
   empl.comments = [];
- 
+  
   storeEmployee(empl);
   drawEmplList();
+  successMsgShow();
+//  setTimeout( function() {
+//    successMsgHide();
+//  }, 1000);
+  setTimeout( function() {
+    successMsgHide();
+  }, 1150);
+  saveEmployeeForm.reset();
+  setTimeout( function() {
+    document.location.href = "#x";
+  }, 1200);
+//  successMsgHide();
+  return false;
 };
 
-function storeEmployee(empl) {
-  addItem(empl.id, empl);
+function successMsgShow() {
+  var successMsg = document.querySelector('.block-create-employee-success-msg');
+  successMsg.style.visibility = "visible";
+  successMsg.style.opacity = "1";
+}
+
+function successMsgHide() {
+  var successMsg = document.querySelector('.block-create-employee-success-msg');
+  successMsg.style.opacity = "";
+  successMsg.style.visibility = "";
+}
+ 
+
+function storeEmployee(employee) {
+  addItem(employee.id, employee);
 }
 
 function showDescript(employeeId) {

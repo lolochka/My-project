@@ -31,10 +31,10 @@ a:hover, a:focus, a:active {
 /*HEADER NAV BEGINS*/
 
 .block-header {
-   margin: 0px auto;
-   background-color: #7421a4;
-   color: #fff;
-   overflow: hidden;
+  background-color: #7421a4;
+  color: #fff;
+  margin: 0 auto;
+  overflow: hidden;
 }
 
 .block-header_block-content{
@@ -259,15 +259,15 @@ a:hover, a:focus, a:active {
 }
 
 .block-emploee-description_block-main-description_links-list_link a{
-   display: inline-block;
-   max-width: 200px;
-   max-height: 18px;
-   overflow: hidden;
-   text-overflow: ellipsis;
-   font-size: 1em;
-   vertical-align: top;
-   padding-left: 25px;
-   margin-bottom: 8px;
+  display: inline-block;
+  width: 100%;
+  max-height: 18px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 1em;
+  vertical-align: top;
+  padding-left: 25px;
+  margin-bottom: 8px;
 }
 
 .link-link {
@@ -521,10 +521,6 @@ a:hover, a:focus, a:active {
    display: block;
 }
 
-.overlay:target~.block-footer {
-   display: none;
-}
-
 .heading-create-employee {
    padding: 0.5em 1em;
    padding: 16px 13px;
@@ -622,31 +618,31 @@ select::-ms-expand {
 }
 
 input[name="empl-name"], input[name="empl-surname"], select[name="empl-department"], input[name="empl-manager"], input[name="empl-email"], input[name="empl-skype"], select[name="empl-month-career-start"] {
-   box-sizing: border-box;
-   width: 183px;
+  box-sizing: border-box;
+  width: 183px;
 }
 
 input[name="empl-title"] {
-   width: 226px;
+  width: 226px;
 } 
 
 select[name="empl-level"] {
-   width: 140px;
+  width: 140px;
 }
 
 
 input[name="empl-year-career-start"] {
-   width: 89px;
+  width: 89px;
 }
 
 input[name="empl-primary-skills"] {
-   width:100%;
+  width:100%;
 }
 
 input[type="url"] {
-   width: 100%;
-   background-position: 8px 50%;
-   padding-left: 30px;
+  width: 100%;
+  background-position: 8px 50%;
+  padding-left: 30px;
 } 
 
 input:focus, input.focus {
@@ -697,6 +693,20 @@ button[id="buton-create-employee"] {
 button[id="buton-create-employee"]:hover, button[id="buton-create-employee"]:active, button[id="buton-create-employee"]:focus {
    color: #c0c0c0;
    background-color: #4c0f6e;
+}
+
+.block-create-employee-success-msg {
+  text-align: center;
+  height: 28px;
+  color: #4c0f6e;
+  font-weight: 700;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: opacity 0.3s;
+  -moz-transition: opacity 0.3s;
+  -ms-transition: opacity 0.3s;
+  -o-transition: opacity 0.3s;
+  transition: opacity 0.3s;
 }
 /*FORM ENDS*/
 /*FORM CREATE NEW EMPLOYEE ENDS*/
