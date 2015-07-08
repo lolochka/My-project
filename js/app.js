@@ -22,6 +22,7 @@ function drawEmplList() {
     employeesLi.setAttribute('onclick', 'showDescript(this.id)');
     employeesUl.appendChild(employeesLi);
   }
+  giveListScroll(employeesUl);
   
   if (employees.length >= 1) {
     var j = employees.length - 1;
@@ -33,6 +34,8 @@ function drawEmplList() {
   } else {
     clearDescript();
   }
+  
+  giveListScroll(employeesUl);
 }
 
 var saveEmployeeForm = document.getElementById('create-emloyee-form');
@@ -186,9 +189,9 @@ function drawDescription(currentEmpl) {
   var currentEmplLd;
   currentEmpl.ldUrl != 0 ? currentEmplLd = '<li class="block-emploee-description_block-main-description_links-list_link link-linkedin"><a href="' + currentEmpl.ldUrl + '" title="' + currentEmpl.ldUrl + '">' + currentEmpl.ldUrl + '</a></li>' : currentEmplLd = '';
   var currentEmplBh;
-  currentEmpl.bhUrl != 0 ? currentEmplBh = '<li class="block-emploee-description_block-main-description_links-list_link link-linkedin"><a href="' + currentEmpl.bhUrl + '" title="' + currentEmpl.bhUrl + '">' + currentEmpl.bhUrl + '</a></li>' : currentEmplBh = '';
+  currentEmpl.bhUrl != 0 ? currentEmplBh = '<li class="block-emploee-description_block-main-description_links-list_link link-behance"><a href="' + currentEmpl.bhUrl + '" title="' + currentEmpl.bhUrl + '">' + currentEmpl.bhUrl + '</a></li>' : currentEmplBh = '';
   var currentEmplOtherUrl;
-  currentEmpl.otherUrl != 0 ? currentEmplOtherUrl = '<li class="block-emploee-description_block-main-description_links-list_link link-linkedin"><a href="' + currentEmpl.otherUrl + '" title="' + currentEmpl.otherUrl + '">' + currentEmpl.otherUrl + '</a></li>' : currentEmplOtherUrl = '';
+  currentEmpl.otherUrl != 0 ? currentEmplOtherUrl = '<li class="block-emploee-description_block-main-description_links-list_link link-link"><a href="' + currentEmpl.otherUrl + '" title="' + currentEmpl.otherUrl + '">' + currentEmpl.otherUrl + '</a></li>' : currentEmplOtherUrl = '';
   
   var currentEmplUrls;
   currentEmpl.ldUrl != 0 || currentEmpl.bhUrl != 0 || currentEmpl.otherUrl != 0 ? currentEmplUrls = '<p class="block-emploee-description_block-main-description_links_label">Links:</p><ul class="block-emploee-description_block-main-description_links-list">' + currentEmplLd + currentEmplBh + currentEmplOtherUrl + '</ul>' : currentEmplUrls = '';
@@ -206,6 +209,10 @@ function drawDescription(currentEmpl) {
       
     }
   }
+  
+  
+  var blockDescription = document.querySelector('.block-emploee-description_block-main-description'); 
+//  giveListScroll(blockDescription);
 }
 
 function showDescriptBlock() {
@@ -214,7 +221,7 @@ function showDescriptBlock() {
   var descOverlay = document.querySelector('.description-overlay');
   descOverlay.style.visibility = 'visible';
   descOverlay.style.opacity = '1';
-  up();
+//  up();
 }
 
 function hideDescriptBlock() {
@@ -244,12 +251,12 @@ var formExitButton = document.querySelector('.heading-create-employee_close');
 
 formOverlay.onclick = function(e) {
   document.getElementById('create-emloyee-form').reset();
-  up();
+//  up();
 }
 
 formExitButton.onclick = function(e) {
   document.getElementById('create-emloyee-form').reset();
-  up();
+//  up();
 }
 
 var t;
@@ -310,4 +317,18 @@ function deleteComment(id) {
       deleteComment(id)
     }
   }
+}
+
+var ulList = document.querySelector('.block-employees_list');
+
+
+function giveListScroll(list) {
+  var pageHeight =  window.innerHeight - 44 - 55 - 49 - 49 - 53;
+  console.log(pageHeight);
+  list.style.maxHeight = pageHeight + "px";
+}
+
+window.onresize = function () {
+  var ulList = document.querySelector('.block-employees_list');
+  giveListScroll(ulList);
 }

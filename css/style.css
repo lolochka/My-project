@@ -144,7 +144,8 @@ a:hover, a:focus, a:active {
 
 /*MAIN DESCRIPTION BEGINS*/
 .block-emploee-description_block-main-description {
-   padding: 19px 15px;
+  padding: 19px 15px;
+  overflow: auto;
 }
 
 .block-emploee-description_block-main-description_header {
@@ -354,6 +355,11 @@ a:hover, a:focus, a:active {
    background-color: #fff;
    margin-right: -400px;
    min-height: 200px;
+}
+
+.block-employees_list {
+/*  max-height: 100px;*/
+  overflow: auto;
 }
 
 .block-employees_title {
