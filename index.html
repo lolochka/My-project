@@ -87,7 +87,7 @@
       <ul class="create-emloyee-form_list">
             
         <li class="create-emloyee-form_list-field">
-          <input type="text" name='empl-name' placeholder="Name" required>
+          <input type="text" name='empl-name' placeholder="Name" required pattern="^[A-Za-z]{2,}">
           <input type="text" name='empl-surname' placeholder="Surname" required>
         </li>
             
@@ -129,7 +129,7 @@
             <option value="10">November</option>
             <option value="11">December</option>
           </select>
-          <input type="number"  name="empl-year-career-start" placeholder="year">
+          <input type="text"  name="empl-year-career-start" placeholder="year" pattern="^(19|20)\d\d">
         </li>
             
         <li class="create-emloyee-form_list-field">

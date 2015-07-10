@@ -448,25 +448,38 @@ a:hover, a:focus, a:active {
 }
 
 .block-employees_block-employee_block-tags {
-   max-height: 18px;
+   max-height: 22px;
    overflow: hidden;
    font-size: 13px;
 }
 
 .block-employees_block-employee_block-tags_tag {
-   display: inline-block;
-   font-weight: 300;
+  display: inline-block;
+  font-weight: 300;
+  margin-right: 5px;
+  margin-bottom: 3px;
+  padding: 1px 3px;
+  font-size: 12px;
+  background-color: #ddd;
 /*   background-color: #A7DBDB;*/
 }
 
-.block-employees_block-employee_block-tags_tag::after {
-   content: ',';
-   margin-right: 5px;
+.mobile:hover+.block-employees_block-employee_block-tags_tag, .mobile:active+.block-employees_block-employee_block-tags_tag, .mobile:focus+.block-employees_block-employee_block-tags_tag, .mobile.active .block-employees_block-employee_block-tags_tag {
+  background-color: #13d56e;
 }
 
-.block-employees_block-employee_block-tags_tag:last-child::after {
-   content: '';
+.web:hover~.block-employees_block-employee_block-tags_tag, .web:active~.block-employees_block-employee_block-tags_tag, .web:focus~.block-employees_block-employee_block-tags_tag, .web.active .block-employees_block-employee_block-tags_tag {
+  background-color: #ffb912;
 }
+
+.testing:hover~.block-employees_block-employee_block-tags_tag, .testing:active~.block-employees_block-employee_block-tags_tag, .testing:focus~.block-employees_block-employee_block-tags_tag, .testing.active .block-employees_block-employee_block-tags_tag {
+  background-color: #13b3d5;
+}
+
+.sales:hover~.block-employees_block-employee_block-tags_tag, .sales:active~.block-employees_block-employee_block-tags_tag, .sales:focus~.block-employees_block-employee_block-tags_tag, .sales.active .block-employees_block-employee_block-tags_tag{
+  background-color: #7421a4;
+}
+
 /*EMPLOYEES LIST ENDS*/
 
 /*FORM CREATE NEW EMPLOYEE BEGINS*/

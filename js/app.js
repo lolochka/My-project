@@ -22,7 +22,7 @@ function drawEmplList() {
     employeesLi.setAttribute('onclick', 'showDescript(this.id)');
     employeesUl.appendChild(employeesLi);
   }
-  giveListScroll(employeesUl);
+//  giveScroll(employeesUl, 197);
   
   if (employees.length >= 1) {
     var j = employees.length - 1;
@@ -35,7 +35,7 @@ function drawEmplList() {
     clearDescript();
   }
   
-  giveListScroll(employeesUl);
+//  giveScroll(employeesUl);
 }
 
 var saveEmployeeForm = document.getElementById('create-emloyee-form');
@@ -141,7 +141,7 @@ function drawDescription(currentEmpl) {
   currentEmpl.manager != 0 ? currentEmplManager = '<p class="block-emploee-description_block-main-description_manager">Manager: <span class="block-emploee-description_block-main-description_manager-label">' + currentEmpl.manager + '</span></p>' : currentEmplManager = '';
   
   var currentEmplExperience;
-  if (currentEmpl.years != 0 && currentEmpl.month != 0 ) {
+  if (currentEmpl.years != 0 || currentEmpl.month != 0 ) {
     var month = currentEmpl.month;
     var year = currentEmpl.year;
     var date = new Date();
@@ -212,7 +212,7 @@ function drawDescription(currentEmpl) {
   
   
   var blockDescription = document.querySelector('.block-emploee-description_block-main-description'); 
-//  giveListScroll(blockDescription);
+//  giveScroll(blockDescription, 140);
 }
 
 function showDescriptBlock() {
@@ -314,7 +314,7 @@ function deleteComment(id) {
       console.log(comments);
       addItem(id, empl);
       document.querySelector('.block-emploee-description_block-comments_title').innerHTML = 'Comments (' + comments.length + '):';
-      deleteComment(id)
+      deleteComment(id);
     }
   }
 }
@@ -322,13 +322,15 @@ function deleteComment(id) {
 var ulList = document.querySelector('.block-employees_list');
 
 
-function giveListScroll(list) {
-  var pageHeight =  window.innerHeight - 44 - 55 - 49 - 49 - 53;
+function giveScroll(list, x) {
+  var pageHeight =  window.innerHeight - x;
   console.log(pageHeight);
   list.style.maxHeight = pageHeight + "px";
 }
 
-window.onresize = function () {
-  var ulList = document.querySelector('.block-employees_list');
-  giveListScroll(ulList);
-}
+//window.onresize = function () {
+//  var ulList = document.querySelector('.block-employees_list');
+//  var blockDesc = document.querySelector('.block-emploee-description_block-main-description');
+//  giveScroll(ulList, 200);
+//  giveScroll(blockDesc, 200);
+//}
