@@ -15,7 +15,9 @@ function drawEmplList() {
     var skillSet = employees[i].skills;
     skillUl = skillSet.join('</li><li class="block-employees_block-employee_block-tags_tag">')
     skillUl = '<li class="block-employees_block-employee_block-tags_tag">' + skillUl + '</li>';
-    employeesLi.innerHTML = '<div class="photo-block"><img src="images/photo-harry-potter.png" alt="Harry Potter foto"></div><h3 class="block-employees_block-employee_name">' + employees[i].name + ' ' + employees[i].surname + '</h3><p class="block-employees_block-employee_title">' + employees[i].level + ' ' + employees[i].title + '</p><ul class="block-employees_block-employee_block-tags">' + skillUl +'</ul>';
+    var photoUrl;
+    employees[i].photoUrl != 0 ? photoUrl = employees[i].photoUrl : photoUrl = "images/user.png";
+    employeesLi.innerHTML = '<div class="photo-block"><img src="' + photoUrl + '" alt="' + employees[i].name + ' ' + employees[i].surname + ' photo" width="59"></div><h3 class="block-employees_block-employee_name">' + employees[i].name + ' ' + employees[i].surname + '</h3><p class="block-employees_block-employee_title">' + employees[i].level + ' ' + employees[i].title + '</p><ul class="block-employees_block-employee_block-tags">' + skillUl +'</ul>';
     employeesLi.setAttribute('id', employees[i].id);
     var emplClass = 'block-employees_block-employee ' + employees[i].department;
     employeesLi.setAttribute('class', emplClass);
@@ -57,6 +59,7 @@ saveEmployeeForm.onsubmit = function (e) {
   var emplOtherUrl = document.querySelector("input[name='empl-web-page']");
   var emplSkype = document.querySelector("input[name='empl-skype']");
   var emplEmail = document.querySelector("input[name='empl-email']");
+  var emplPhotoUrl = document.querySelector('input[name="photoUrl"]');
   
   var date = new Date();
   empl.id = date.getTime();
@@ -73,6 +76,7 @@ saveEmployeeForm.onsubmit = function (e) {
   var s = emplSkills.value;
   var skills = s.split(", ");
   empl.skills = skills;
+  empl.photoUrl = emplPhotoUrl.value;
   
   empl.ldUrl = emplLdUrl.value;
   empl.bhUrl = emplBhUrl.value;
@@ -80,6 +84,7 @@ saveEmployeeForm.onsubmit = function (e) {
   empl.skype = emplSkype.value;
   empl.email = emplEmail.value;
   empl.comments = [];
+
   
   storeEmployee(empl);
   drawEmplList();
@@ -135,7 +140,9 @@ function drawDescription(currentEmpl) {
   var currentEmplEmail;
   currentEmpl.email != 0 ? currentEmplEmail = '<div class="block-emploee-description_block-main-description_block-contacts_email"><span class="flaticon-send4"></span><a href="mailto:#" title="harry_potter@gmail.com">' + currentEmpl.email + '</a></div>' : currentEmplEmail = '';
   
-  mainDescHeader.innerHTML = '<aside class="block-emploee-description_block-main-description_block-contacts"><h3 class="block-emploee-description_block-main-description_block-contacts_heading">Contact information</h3><div class="block-emploee-description_block-main-description_block-contacts_skype"><span class="flaticon-skype12"></span>' + currentEmpl.skype + '</div>' + currentEmplEmail + '</aside><div class="photo-block"><img src="images/photo-harry-potter.png" alt="Harry Potter foto"></div><h3 class="block-emploee-description_block-name_name">' + currentEmpl.name + ' ' + currentEmpl.surname + '</h3><div class="wrapper block-emploee-description_block-main-description_contacts_line"></div>';
+  var currentEmplPhotoUrl;
+  currentEmpl.photoUrl != 0 ? currentEmplPhotoUrl = currentEmpl.photoUrl : currentEmplPhotoUrl = "images/user.png";
+  mainDescHeader.innerHTML = '<aside class="block-emploee-description_block-main-description_block-contacts"><h3 class="block-emploee-description_block-main-description_block-contacts_heading">Contact information</h3><div class="block-emploee-description_block-main-description_block-contacts_skype"><span class="flaticon-skype12"></span>' + currentEmpl.skype + '</div>' + currentEmplEmail + '</aside><div class="photo-block"><img src="' + currentEmplPhotoUrl + '" alt="' + currentEmpl.name + ' ' + currentEmpl.surname + ' photo" width="59"></div><h3 class="block-emploee-description_block-name_name">' + currentEmpl.name + ' ' + currentEmpl.surname + '</h3><div class="wrapper block-emploee-description_block-main-description_contacts_line"></div>';
   var descBody = document.querySelector('.block-emploee-description_description');
   var currentEmplManager;
   currentEmpl.manager != 0 ? currentEmplManager = '<p class="block-emploee-description_block-main-description_manager">Manager: <span class="block-emploee-description_block-main-description_manager-label">' + currentEmpl.manager + '</span></p>' : currentEmplManager = '';

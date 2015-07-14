@@ -88,7 +88,7 @@
             
         <li class="create-emloyee-form_list-field">
           <input type="text" name='empl-name' placeholder="Name" required pattern="^[A-Za-z]{2,}">
-          <input type="text" name='empl-surname' placeholder="Surname" required>
+          <input type="text" name='empl-surname' placeholder="Surname" required pattern="^[A-Za-z]{2,}">
         </li>
             
         <li class="create-emloyee-form_list-field">
@@ -135,6 +135,11 @@
         <li class="create-emloyee-form_list-field">
           <span class="input-label">Primary skills</span>
           <input name="empl-primary-skills" type="text" placeholder="Separate skills by comas" required>
+        </li>
+
+        <li class="create-emloyee-form_list-field">
+          <span class="input-label">Add employee photo URL</span>
+          <input name="photoUrl" type="url" placeholder="You can use photo Url from Linkedin">
         </li>
             
         <li  class="create-emloyee-form_list-field">

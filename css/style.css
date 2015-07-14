@@ -283,6 +283,10 @@ a:hover, a:focus, a:active {
    background: url(images/icon-behance.png) no-repeat;
 }
 
+input[name="photoUrl"] {
+  background: url(images/user.png) no-repeat;
+}
+
 /*BLOCK DESCRIPTION ENDS*/
 
 /*COMMENTS BLOCK BEGINS*/
