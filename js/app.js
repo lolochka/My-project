@@ -335,9 +335,7 @@ function giveScroll(list, x) {
   list.style.maxHeight = pageHeight + "px";
 }
 
-//window.onresize = function () {
-//  var ulList = document.querySelector('.block-employees_list');
-//  var blockDesc = document.querySelector('.block-emploee-description_block-main-description');
-//  giveScroll(ulList, 200);
-//  giveScroll(blockDesc, 200);
-//}
+window.onresize = function () {
+  var ulList = document.querySelector('.block-employees_list');
+  giveScroll(ulList, 200);
+}
